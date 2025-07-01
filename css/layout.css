@@ -301,14 +301,14 @@ section {
 }
 
 /*윗부분*/
-.sec5 .top {
+:is(.sec5, .sec7) .top {
   width: 100%;
   height: fit-content;
   display: flex;
   justify-content: space-between;
 }
 
-.sec5 .top .left h2 {
+:is(.sec5, .sec7) .top .left h2 {
   font-weight: 700;
   font-size: 6.4rem;
   font-family: Prompt;
@@ -317,20 +317,20 @@ section {
   text-transform: uppercase;
 }
 
-.sec5 .top .left p {
+:is(.sec5, .sec7) .top .left p {
   margin-top: 0.4166666667vw;
   font-weight: 400;
   font-size: 1.1458333333vw;
   line-height: 1.7;
 }
 
-.sec5 .top a {
+:is(.sec5, .sec7) .top a {
   display: block;
   width: 3.3333333333vw;
   height: 3.3333333333vw;
 }
 
-.sec5 .top a > img {
+:is(.sec5, .sec7) .top a > img {
   width: 100%;
 }
 
@@ -431,4 +431,43 @@ section {
   font-weight: 400;
   font-size: 1.1458333333vw;
   white-space: normal;
+}
+
+/*일곱번째 섹션*/
+.sec7 {
+  margin-top: 12.5vw;
+  padding: 0 4.7916666667vw 12.5vw;
+  box-sizing: border-box;
+}
+
+.sec7 ul {
+  border-top: 4px solid #000;
+  border-bottom: 4px solid #000;
+  margin-top: 4.1666666667vw;
+}
+
+.sec7 ul li a {
+  padding: 3.3333333333vw 2.0833333333vw;
+  display: flex;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.sec7 ul li a h4 {
+  width: 5.5208333333vw;
+  font-size: 1.4583333333vw;
+}
+
+.sec7 ul li a h3 {
+  font-size: 1.6666666667vw;
+  flex: 1;
+}
+
+.sec7 ul li a span {
+  font-size: 1.4583333333vw;
+  margin-left: 10.4166666667vw;
+}
+
+.sec7 ul li:not(:first-child) {
+  border-top: 1px solid #5b5151;
 }
