@@ -22,6 +22,10 @@ body {
 header {
   width: 100%;
   height: fit-content;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
 }
 
 /*pregress bar*/
@@ -94,7 +98,7 @@ h1 > a > img {
   height: 5.8333333333vw;
   padding: 2.2395833333vw 1.25vw;
   box-sizing: border-box;
-  display: flex;
+  display: none;
   align-items: center;
   position: absolute;
   top: 5.5208333333vw;
@@ -124,4 +128,66 @@ h1 > a > img {
 
 .icons button:last-child {
   margin-left: 1.4583333333vw;
+}
+
+/*메인*/
+main {
+  width: 100%;
+  height: fit-content;
+}
+
+/*섹션 공통 설정*/
+section {
+  width: 100%;
+  height: fit-content;
+}
+
+/*메인 비주얼*/
+.main_visual {
+  padding: 8.75vw 4.7916666667vw 0;
+  box-sizing: border-box;
+}
+
+.main_visual p {
+  width: 100%;
+  height: fit-content;
+  font-weight: 500;
+  font-size: 1.25vw;
+  line-height: 1.7;
+}
+
+.main_visual .top_txt {
+  text-align: right;
+}
+
+.main_visual .main_txt {
+  margin-top: 2.2916666667vw;
+}
+
+.main_visual .main_txt p {
+  height: 7.8125vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 128px;
+  font-weight: 700;
+  font-size: 6.6666666667vw;
+  font-family: Prompt;
+  line-height: 1.1;
+  text-transform: uppercase;
+  position: relative;
+  right: 0.5208333333vw;
+}
+
+.main_visual .main_txt p:first-child {
+  padding-left: 15.4166666667vw;
+}
+
+.main_visual .main_txt p:last-child {
+  padding-left: 7.7604166667vw;
+}
+
+.main_visual .bottom_txt {
+  margin: 5.8333333333vw 0;
+  padding-left: 10.2083333333vw;
+  box-sizing: border-box;
 }
