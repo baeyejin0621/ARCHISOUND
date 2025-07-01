@@ -14,8 +14,6 @@ body {
     "Malgun Gothic", "맑은 고딕", Dotum, "돋움", sans-serif;
   line-height: 1.15;
   font-weight: 400;
-  /*지워야 함*/
-  height: 10000px;
 }
 
 /*헤더*/
@@ -155,10 +153,12 @@ section {
   line-height: 1.7;
 }
 
+/*위쪽 글*/
 .main_visual .top_txt {
   text-align: right;
 }
 
+/*중간 글*/
 .main_visual .main_txt {
   margin-top: 2.2916666667vw;
 }
@@ -185,6 +185,7 @@ section {
   padding-left: 7.7604166667vw;
 }
 
+/*아래쪽 글*/
 .main_visual .bottom_txt {
   margin: 5.8333333333vw 0;
   padding-left: 10.2083333333vw;
@@ -214,4 +215,121 @@ section {
   font-weight: 600;
   font-size: 3.0208333333vw;
   line-height: 1.4;
+}
+
+/*네번째 섹션*/
+.sec4 {
+  padding-top: 10.4166666667vw;
+  margin: 41.6666666667vw 0 31.25vw;
+  position: relative;
+}
+
+/*중앙 글자*/
+.sec4 .center_txt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-family: Prompt;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sec4 .center_txt h4 {
+  font-size: 1.4583333333vw;
+  line-height: 1.1;
+  letter-spacing: 2.24px;
+}
+
+.sec4 .center_txt .img_title {
+  width: 50vw;
+  height: auto;
+  margin-top: 1.25vw;
+  position: relative;
+}
+
+.sec4 .center_txt .img_title h2 {
+  font-size: 5.8333333333vw;
+  line-height: 1;
+  letter-spacing: 4.48px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sec4 .center_txt .img_title h2:not(:first-child) {
+  opacity: 0;
+}
+
+/*컨텐츠 영역*/
+.sec4 .content_wrap {
+  width: 100%;
+  height: fit-content;
+}
+
+.sec4 .content_wrap a {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+}
+
+.sec4 .content_wrap a:nth-child(2n + 1) {
+  align-items: flex-end;
+  padding-right: 12.5vw;
+}
+
+.sec4 .content_wrap a:nth-child(2n) {
+  padding-left: 4.7916666667vw;
+}
+
+.sec4 .content_wrap a h3 {
+  margin-bottom: 0.625vw;
+  font-weight: 700;
+  font-size: 1.6666666667vw;
+  line-height: 1.7;
+}
+
+/*다섯번째 섹션*/
+.sec5 {
+  margin-top: 12.5vw;
+  padding: 0 4.7916666667vw;
+  box-sizing: border-box;
+}
+
+/*윗부분*/
+.sec5 .top {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sec5 .top .left h2 {
+  font-weight: 700;
+  font-size: 6.4rem;
+  font-family: Prompt;
+  line-height: 1.1;
+  letter-spacing: 2.56px;
+  text-transform: uppercase;
+}
+
+.sec5 .top .left p {
+  margin-top: 0.4166666667vw;
+  font-weight: 400;
+  font-size: 1.1458333333vw;
+  line-height: 1.7;
+}
+
+.sec5 .top a {
+  display: block;
+  width: 3.3333333333vw;
+  height: 3.3333333333vw;
+}
+
+.sec5 .top a > img {
+  width: 100%;
 }
