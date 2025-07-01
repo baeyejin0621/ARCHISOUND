@@ -137,12 +137,12 @@ main {
 section {
   width: 100%;
   height: fit-content;
+  box-sizing: border-box;
 }
 
 /*메인 비주얼*/
 .main_visual {
   padding: 8.75vw 4.7916666667vw 0;
-  box-sizing: border-box;
 }
 
 .main_visual p {
@@ -208,7 +208,6 @@ section {
 .sec3 {
   margin-top: 16.6666666667vw;
   padding: 0 4.7916666667vw;
-  box-sizing: border-box;
 }
 
 .sec3 p {
@@ -297,7 +296,6 @@ section {
 .sec5 {
   margin-top: 12.5vw;
   padding: 0 4.7916666667vw;
-  box-sizing: border-box;
 }
 
 /*윗부분*/
@@ -389,7 +387,6 @@ section {
   height: 49.4791666667vw;
   background: url(../img/sec6/main_pride_img.jpg) no-repeat center / cover;
   padding: 9.375vw 17.7083333333vw 9.375vw 18.125vw;
-  box-sizing: border-box;
   color: #fff;
 }
 
@@ -437,7 +434,6 @@ section {
 .sec7 {
   margin-top: 12.5vw;
   padding: 0 4.7916666667vw 12.5vw;
-  box-sizing: border-box;
 }
 
 .sec7 ul {
@@ -470,4 +466,52 @@ section {
 
 .sec7 ul li:not(:first-child) {
   border-top: 1px solid #5b5151;
+}
+
+/*여덟번째 섹션*/
+.sec8 {
+  padding-bottom: 12.5vw;
+  overflow: hidden;
+}
+
+.sec8 > div {
+  font-weight: 700;
+  font-size: 6.0416666667vw;
+  font-family: Prompt;
+  line-height: 1.1;
+  display: flex;
+  white-space: nowrap;
+  letter-spacing: 4.64px;
+  text-transform: uppercase;
+}
+
+.sec8 > div:first-child > p {
+  padding-right: 2.0833333333vw;
+}
+
+.sec8 > div:last-child > p {
+  padding-left: 2.0833333333vw;
+}
+
+.sec8 > div > p > span {
+  color: var(--main-color);
+}
+
+.sec8 .move_left p {
+  animation: moveleft 19s linear infinite;
+}
+
+.sec8 .move_right p {
+  animation: moveleft 19s linear reverse infinite;
+}
+
+/*애니메이션*/
+@keyframes moveleft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
