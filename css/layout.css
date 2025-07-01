@@ -2,12 +2,126 @@
 /*reset*/
 @import url(./reset.css);
 /*웹 폰트*/
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+  font-size: 10px;
+}
 
 body {
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR",
     "Malgun Gothic", "맑은 고딕", Dotum, "돋움", sans-serif;
-  font-size: 10px;
   line-height: 1.15;
   font-weight: 400;
+  /*지워야 함*/
+  height: 10000px;
+}
+
+/*헤더*/
+header {
+  width: 100%;
+  height: fit-content;
+}
+
+/*pregress bar*/
+header .progress_bar {
+  width: 100%;
+  height: 0.4166666667vw;
+}
+
+/*inner header*/
+header .inner_header {
+  width: 100%;
+  height: 5.8333333333vw;
+  padding: 0 4.7916666667vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 3.125vw;
+}
+
+/*로고*/
+h1 {
+  line-height: 1;
+  width: 22rem;
+  height: 3.2rem;
+  margin-right: auto;
+}
+
+h1 > a {
+  display: block;
+  width: 100%;
+}
+
+h1 > a > img {
+  width: 100%;
+}
+
+/*gnb*/
+#gnb {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+#gnb > ul {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+}
+
+/*1차 메뉴*/
+#gnb > ul > li {
+  width: fit-content;
+  height: fit-content;
+  padding: 2.34375vw 0.8333333333vw;
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-family: Prompt;
+  line-height: 1.1;
+  letter-spacing: 0.072rem;
+  text-transform: uppercase;
+}
+
+#gnb > ul > li:last-child {
+  padding: 2.34375vw 0 2.34375vw 0.8333333333vw;
+}
+
+/*2차 메뉴*/
+.submenu {
+  width: fit-content;
+  height: 5.8333333333vw;
+  padding: 2.2395833333vw 1.25vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 5.5208333333vw;
+  left: -0.3645833333vw;
+  white-space: nowrap;
+}
+
+.submenu > li {
+  font-family: Pretendard;
+  letter-spacing: normal;
+  margin-left: 2.0833333333vw;
+}
+
+.submenu > li:first-child {
+  margin-left: 0;
+}
+
+/*아이콘 영역*/
+.icons button {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.icons button > img {
+  width: 100%;
+}
+
+.icons button:last-child {
+  margin-left: 1.4583333333vw;
 }
