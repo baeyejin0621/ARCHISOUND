@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>아키사운드</title>
+    <!--gsap-->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
     <!--CSS-->
     <link rel="stylesheet" href="./css/layout.css" />
   </head>
@@ -52,6 +58,90 @@
           </div>
         </div>
       </header>
+      <!--돋보기 아이콘 클릭하면 나타날 창-->
+      <div class="search_area">
+        <div class="top">
+          <h2>
+            <a href="/">
+              <img src="./img/header/archi_logo_white.png" alt="로고" />
+            </a>
+          </h2>
+          <button type="button">
+            <img src="./img/header/ico_close_white.png" alt="닫기" />
+          </button>
+        </div>
+        <div class="bottom">
+          <div class="search_wrap">
+            <input type="text" placeholder="검색어를 입력해주세요." />
+            <div class="button_area">
+              <img src="./img/header/ico_cancel.png" alt="없애기" />
+              <img src="./img/header/ico_search.png" alt="검색" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--전체 메뉴-->
+      <div class="all_menu">
+        <div class="top">
+          <h2>
+            <a href="/">
+              <img src="./img/header/archi_logo_white.png" alt="로고" />
+            </a>
+          </h2>
+          <button type="button">
+            <img src="./img/header/ico_close_white.png" alt="닫기" />
+          </button>
+        </div>
+        <nav id="menu">
+          <ul>
+            <li>
+              company
+              <ul class="submenu">
+                <li><a href="#">company</a></li>
+              </ul>
+            </li>
+            <li>
+              business
+              <ul class="submenu">
+                <li><a href="#">계획설계</a></li>
+                <li><a href="#">중간설계</a></li>
+                <li><a href="#">실시설계</a></li>
+                <li><a href="#">시공단계 컨설팅</a></li>
+                <li><a href="#">시공단계 책임시공</a></li>
+                <li><a href="#">평가단계</a></li>
+              </ul>
+            </li>
+            <li>
+              project
+              <ul class="submenu">
+                <li><a href="#">project</a></li>
+              </ul>
+            </li>
+            <li>
+              pr center
+              <ul class="submenu">
+                <li><a href="#">pr center</a></li>
+              </ul>
+            </li>
+            <li>
+              contact us
+              <ul class="submenu">
+                <li><a href="#">contact us</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="bottom">
+          <div class="terms">
+            <a href="#">개인정보처리방침</a>
+            <a href="#">이메일무단수집거부</a>
+          </div>
+          <div class="contact">
+            <span>+82 02-545-7811</span>
+            <span>lim@archisound.co.kr</span>
+          </div>
+        </div>
+      </div>
       <!--메인-->
       <main>
         <!--메인 비주얼-->
@@ -331,6 +421,11 @@
             </p>
           </div>
         </section>
+        <!--플로팅 버튼-->
+        <div class="floating">
+          <img src="./img/sec7/main_sound_stop_ico.png" alt="음악 멈춤" />
+          <span>sound off</span>
+        </div>
       </main>
       <!--푸터-->
       <footer>
@@ -377,5 +472,7 @@
         </div>
       </footer>
     </div>
+    <!--js-->
+    <script src="./js/scroll_trigger.js"></script>
   </body>
 </html>

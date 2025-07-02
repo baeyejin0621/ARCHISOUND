@@ -144,9 +144,14 @@ a {
 input,
 textarea {
   outline: none;
+  border: none;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR",
+    "Malgun Gothic", "맑은 고딕", Dotum, "돋움", sans-serif;
 }
 button {
   border: none;
   background-color: transparent;
   padding: 0;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR",
+    "Malgun Gothic", "맑은 고딕", Dotum, "돋움", sans-serif;
 }
