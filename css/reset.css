@@ -149,6 +149,7 @@ textarea {
     "Malgun Gothic", "맑은 고딕", Dotum, "돋움", sans-serif;
 }
 button {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   padding: 0;

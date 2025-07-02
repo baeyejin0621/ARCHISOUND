@@ -17,8 +17,9 @@ requestAnimationFrame(raf);
 
 /*gsap*/
 document.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger, SplitText);
 
+  /*헤더*/
   //헤더
   const innerHeader = document.querySelector(".inner_header");
   //로고
@@ -85,7 +86,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
       progressBar.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
 
       //위로 스크롤시 스타일 바뀐 헤더 내려옴
-    } else if (getComputedStyle(innerHeader).backgroundColor) {
+    } else if (
+      getComputedStyle(innerHeader).backgroundColor &&
+      !window.scrollY == 0
+    ) {
       //헤더
       innerHeader.style.backdropFilter = "blur(15px)";
       innerHeader.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
@@ -115,4 +119,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
       });
     }
   });
+
+  /*두번째 섹션*/
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec2",
+        start: "0% 100%",
+        end: "100% -57%",
+        scrub: 1,
+      },
+    })
+    .fromTo(
+      ".sec2 img",
+      {
+        y: -400,
+      },
+      {
+        y: 0,
+      }
+    );
 });

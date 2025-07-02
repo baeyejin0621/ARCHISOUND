@@ -23,7 +23,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
 }
 
 /*pregress bar*/
@@ -51,6 +51,7 @@ header .inner_header {
   align-items: center;
   gap: 3.125vw;
   position: relative;
+  transition: 0.12s;
 }
 
 /*로고*/
@@ -171,12 +172,13 @@ h1 > a > img {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
   height: 22.5vw;
   backdrop-filter: blur(15px);
   background-color: rgba(0, 0, 0, 0.7);
   transform: translateY(-100%);
+  transition: 0.3s;
 }
 
 /*상단*/
@@ -253,14 +255,19 @@ h1 > a > img {
   align-items: center;
 }
 
-.search_area .bottom .button_area img:first-child {
+.search_area .bottom .button_area button:first-child {
   width: 1.6666666667vw;
   height: 1.6666666667vw;
+  display: none;
 }
 
-.search_area .bottom .button_area img:last-child {
+.search_area .bottom .button_area button:last-child {
   width: 2.0833333333vw;
   height: 2.0833333333vw;
+}
+
+.search_area .bottom .button_area img {
+  width: 100%;
 }
 
 /*전체 메뉴*/
@@ -268,12 +275,13 @@ h1 > a > img {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
   height: 100vh;
   backdrop-filter: blur(15px);
   background-color: rgba(0, 0, 0, 0.7);
   transform: translateY(-100%);
+  transition: 0.3s;
 }
 
 /*상단*/
