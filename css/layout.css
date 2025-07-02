@@ -23,12 +23,22 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
 }
 
 /*pregress bar*/
 header .progress_bar {
   width: 100%;
   height: 0.4166666667vw;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+header .progress_bar .progress {
+  width: 0;
+  height: 100%;
+  background-color: var(--main-color);
 }
 
 /*inner header*/
@@ -40,6 +50,7 @@ header .inner_header {
   display: flex;
   align-items: center;
   gap: 3.125vw;
+  position: relative;
 }
 
 /*로고*/
@@ -125,19 +136,15 @@ h1 > a > img {
 }
 
 /*2차 메뉴 배경*/
-#gnb::after {
-  content: "submenu bg";
-  font-size: 0;
+.submenu_bg {
+  position: absolute;
+  left: 0;
+  top: 5.8333333333vw;
   display: none;
-  position: fixed;
-  left: 50%;
-  top: 5.5208333333vw;
-  transform: translateX(-50%);
   width: 100%;
   height: 5.8333333333vw;
-  padding: 2.2395833333vw 1.25vw;
-  box-sizing: border-box;
   background-color: var(--main-color);
+  backdrop-filter: blur(15px);
 }
 
 /*1차 메뉴에 호버하면 2차 메뉴 나오기*/
