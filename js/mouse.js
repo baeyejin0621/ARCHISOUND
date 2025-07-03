@@ -172,4 +172,14 @@ closeBtn.forEach((element) => {
 });
 
 //검색창에서 검색어가 입력된 상태라면 없애기 버튼 보이기
-searchInput.addEventListener("focus", () => {});
+searchInput.addEventListener("keydown", () => {
+  if (searchInput.value) {
+    cancelBtn.style.display = "block";
+  }
+});
+
+//없애기 버튼 클릭하면 인풋 비우기
+cancelBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  cancelBtn.style.display = "none";
+});
