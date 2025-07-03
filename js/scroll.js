@@ -2,7 +2,7 @@
 
 /*Lenis*/
 const lenis = new Lenis({
-  duration: 4,
+  duration: 3,
 });
 lenis.on("scroll", (e) => {
   // console.log(e);
@@ -138,4 +138,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
         y: 0,
       }
     );
+
+  /*세번째 섹션*/
+  //글자들
+  const span = document.querySelectorAll(".sec3 span");
+  const spanArr = Array.from(
+    "우리는 무형의 가치를 창조하는 그룹입니다.더 좋은 소리환경을 위한 통합 플랫폼을 통해 문화예술컨텐츠의수준을 높이고 삶의 가치를 향상시키는 건축물을 만들고 있습니다.음향이라는 특수한 분야의 오랜 경험과 기술력, 최고의 인재를 겸비하고있습니다. 건축공간의 다양성을 존중하면서 각자의 한계를 넘어가능성을 실현할 가치향상을 위한 기술을 제공하겠습니다."
+  );
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sec3",
+      start: "0% 95%",
+      end: "100% 50%",
+      scrub: 1,
+    },
+  });
+
+  spanArr.forEach((element, i) => {
+    tl.to(span[i], {
+      color: "var(--main-color)",
+      duration: 0.5,
+      delay: 0.3,
+    });
+  });
 });

@@ -486,6 +486,15 @@ section {
 }
 
 .sec3 p {
+  width: fit-content;
+  height: fit-content;
+}
+
+.sec3 p:not(:first-child) {
+  margin-top: 0.2083333333vw;
+}
+
+.sec3 p span {
   font-weight: 600;
   font-size: 3.0208333333vw;
   line-height: 1.4;
