@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         element.style.color = "";
       });
       //2차 메뉴 배경
-      submenuBg.style.backdropFilter = "";
       submenuBg.style.backgroundColor = "";
       submenuBg.style.borderTop = "";
     }

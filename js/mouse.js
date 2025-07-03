@@ -12,6 +12,7 @@ const twoDepth = document.querySelectorAll("#gnb .submenu li a");
 const twoDepthBg = document.querySelector(".submenu_bg");
 
 /*gnb*/
+//1차 메뉴 중 2번째 메뉴에 호버 효과
 oneDepth[1].addEventListener("mouseover", () => {
   twoDepthBg.style.display = "block";
 
@@ -22,38 +23,113 @@ oneDepth[1].addEventListener("mouseover", () => {
       Number(getComputedStyle(header).height.slice(0, -2)) +
       Number(getComputedStyle(twoDepthBg).height.slice(0, -2)) +
       "px";
-
-    //1차 메뉴 호버 효과
-    oneDepth.forEach((element) => {
-      element.addEventListener("mouseover", () => {
-        element.children[0].style.color = "var(--main-color)";
-      });
-
-      element.addEventListener("mouseout", () => {
-        element.children[0].style.color = "#fff";
-      });
-    });
-
-    //2차 메뉴 호버 효과
-    twoDepth.forEach((element) => {
-      element.addEventListener("mouseover", () => {
-        element.style.color = "var(--main-color)";
-      });
-
-      element.addEventListener("mouseout", () => {
-        element.style.color = "#fff";
-      });
-    });
   }
+
+  //2차 메뉴 호버 효과
+  twoDepth.forEach((element) => {
+    element.addEventListener("mouseover", () => {
+      if (getComputedStyle(innerHeader).backdropFilter != "none") {
+        element.style.color = "var(--main-color)";
+
+        //스크롤이 맨위에 닿으면 스타일 초기화
+        window.addEventListener("scroll", () => {
+          if (window.scrollY == 0) {
+            //헤더
+            header.style.backdropFilter = "";
+            header.style.height = "";
+            //1차 메뉴
+            oneDepth.forEach((element) => {
+              element.style.color = "";
+            });
+            //2차 메뉴
+            twoDepth.forEach((element) => {
+              element.style.color = "";
+            });
+          }
+        });
+      }
+    });
+
+    element.addEventListener("mouseout", () => {
+      if (getComputedStyle(innerHeader).backdropFilter != "none") {
+        element.style.color = "#fff";
+
+        //스크롤이 맨위에 닿으면 스타일 초기화
+        window.addEventListener("scroll", () => {
+          if (window.scrollY == 0) {
+            //헤더
+            header.style.backdropFilter = "";
+            header.style.height = "";
+            //1차 메뉴
+            oneDepth.forEach((element) => {
+              element.style.color = "";
+            });
+            //2차 메뉴
+            twoDepth.forEach((element) => {
+              element.style.color = "";
+            });
+          }
+        });
+      }
+    });
+  });
 });
 
 oneDepth[1].addEventListener("mouseout", () => {
   twoDepthBg.style.display = "none";
 
-  if (getComputedStyle(innerHeader).backdropFilter != "none") {
-    header.style.backdropFilter = "";
-    header.style.height = "";
-  }
+  //헤더
+  header.style.backdropFilter = "";
+  header.style.height = "";
+});
+
+//1차 메뉴 호버 효과
+oneDepth.forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    if (getComputedStyle(innerHeader).backdropFilter != "none") {
+      element.children[0].style.color = "var(--main-color)";
+
+      //스크롤이 맨위에 닿으면 스타일 초기화
+      window.addEventListener("scroll", () => {
+        if (window.scrollY == 0) {
+          //헤더
+          header.style.backdropFilter = "";
+          header.style.height = "";
+          //1차 메뉴
+          oneDepth.forEach((element) => {
+            element.style.color = "";
+          });
+          //2차 메뉴
+          twoDepth.forEach((element) => {
+            element.style.color = "";
+          });
+        }
+      });
+    }
+  });
+
+  element.addEventListener("mouseout", () => {
+    if (getComputedStyle(innerHeader).backdropFilter != "none") {
+      element.children[0].style.color = "#fff";
+
+      //스크롤이 맨위에 닿으면 스타일 초기화
+      window.addEventListener("scroll", () => {
+        if (window.scrollY == 0) {
+          //헤더
+          header.style.backdropFilter = "";
+          header.style.height = "";
+          //1차 메뉴
+          oneDepth.forEach((element) => {
+            element.style.color = "";
+          });
+          //2차 메뉴
+          twoDepth.forEach((element) => {
+            element.style.color = "";
+          });
+        }
+      });
+    }
+  });
 });
 
 //두번째 메뉴 a 태그 기능 막기
@@ -61,7 +137,7 @@ oneDepth[1].addEventListener("click", (event) => {
   event.preventDefault();
 });
 
-/*버튼*/
+/*버튼 클릭*/
 //검색 버튼
 const searchBtn = document.querySelector(".icons button:first-child");
 //검색창
@@ -96,6 +172,4 @@ closeBtn.forEach((element) => {
 });
 
 //검색창에서 검색어가 입력된 상태라면 없애기 버튼 보이기
-searchInput.addEventListener("focus", () => {
-  console.log(searchInput.value);
-});
+searchInput.addEventListener("focus", () => {});
