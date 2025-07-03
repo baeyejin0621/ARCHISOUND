@@ -162,4 +162,135 @@ document.addEventListener("DOMContentLoaded", (event) => {
       delay: 0.3,
     });
   });
+
+  /*네번째 섹션*/
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec4",
+        start: "0% 100%",
+        end: "3% 100%",
+        scrub: 1,
+      },
+    })
+    .to("body", {
+      backgroundColor: "#000",
+    });
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec4",
+        start: "0% 100%",
+        end: "20% 100%",
+        scrub: 1,
+      },
+    })
+    .to(".sec4 .bg_video", {
+      display: "block",
+    })
+    .to(
+      ".sec4 .bg_video",
+      {
+        opacity: 0.5,
+        duration: 1,
+      },
+      "<"
+    )
+    .to(
+      ".sec4 .center_txt",
+      {
+        display: "block",
+      },
+      "<"
+    )
+    .to(
+      ".sec4 .center_txt",
+      {
+        position: "fixed",
+        top: "50%",
+        left: 0,
+        y: "-50%",
+        opacity: 1,
+      },
+      "<"
+    );
+
+  //사진 컨텐츠
+  const imgContent = Array.from(document.querySelectorAll(".sec4 .content a"));
+  imgContent.shift();
+  //사진 제목
+  const imgTitle = Array.from(
+    document.querySelectorAll(".sec4 .center_txt .img_title h2")
+  );
+  const imgTitle1 = imgTitle.slice(0, 6);
+  const imgTitle2 = imgTitle.slice(6);
+  const firstTitle = [imgTitle1[0], imgTitle2[0]];
+  imgTitle1.shift();
+  imgTitle2.shift();
+
+  //첫번째 사진 제목 사라지기
+  firstTitle.forEach((element) => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: imgTitle1[0],
+          start: "0% 50%",
+          scrub: 1,
+        },
+      })
+      .to(element, {
+        opacity: 0,
+        duration: 0.4,
+        ease: "ease",
+      });
+  });
+
+  imgContent.forEach((element, i) => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: "0% 50%",
+          end: "100% 50%",
+          scrub: 1,
+        },
+      })
+      .to(element.children[0], {
+        color: "var(--main-color)",
+        duration: 0.01,
+      })
+      .to(
+        imgTitle1[i],
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "ease",
+        },
+        "<"
+      )
+      .to(
+        imgTitle2[i],
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "ease",
+        },
+        "<"
+      )
+      .to(imgTitle1[i], {
+        opacity: 0,
+        duration: 0.4,
+        ease: "ease",
+      })
+      .to(
+        imgTitle2[i],
+        {
+          opacity: 0,
+          duration: 0.4,
+          ease: "ease",
+        },
+        "<"
+      );
+  });
 });
