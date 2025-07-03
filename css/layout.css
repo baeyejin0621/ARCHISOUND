@@ -525,9 +525,9 @@ section {
 .sec4 .center_txt {
   width: 100%;
   position: fixed;
-  top: 50%;
+  top: 38%;
   left: 0;
-  transform: translateY(-50%);
+  transform: translateY(-38%);
   opacity: 0;
   display: none;
   font-weight: 700;
@@ -563,6 +563,7 @@ section {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  transition: 0.4s ease;
 }
 
 .sec4 .center_txt .img_title h2:not(:first-child) {

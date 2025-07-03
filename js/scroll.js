@@ -202,95 +202,136 @@ document.addEventListener("DOMContentLoaded", (event) => {
       {
         display: "block",
       },
-      "<"
+      "-=.8"
     )
-    .to(
+    .fromTo(
       ".sec4 .center_txt",
       {
-        position: "fixed",
-        top: "50%",
-        left: 0,
-        y: "-50%",
+        opacity: 0,
+        y: "-38% + 100px",
+      },
+      {
         opacity: 1,
+        y: "-38%",
+        duration: 0.1,
       },
       "<"
     );
 
   //사진 컨텐츠
   const imgContent = Array.from(document.querySelectorAll(".sec4 .content a"));
-  imgContent.shift();
+
   //사진 제목
   const imgTitle = Array.from(
     document.querySelectorAll(".sec4 .center_txt .img_title h2")
   );
   const imgTitle1 = imgTitle.slice(0, 6);
   const imgTitle2 = imgTitle.slice(6);
-  const firstTitle = [imgTitle1[0], imgTitle2[0]];
-  imgTitle1.shift();
-  imgTitle2.shift();
 
-  //첫번째 사진 제목 사라지기
-  firstTitle.forEach((element) => {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: imgTitle1[0],
-          start: "0% 50%",
-          scrub: 1,
-        },
-      })
-      .to(element, {
-        opacity: 0,
-        duration: 0.4,
-        ease: "ease",
-      });
-  });
-
+  //글자색 바꾸기
   imgContent.forEach((element, i) => {
     gsap
       .timeline({
         scrollTrigger: {
           trigger: element,
           start: "0% 50%",
-          end: "100% 50%",
-          scrub: 1,
+          end: "0% 50%",
+          scrub: true,
         },
       })
       .to(element.children[0], {
         color: "var(--main-color)",
-        duration: 0.01,
-      })
-      .to(
-        imgTitle1[i],
-        {
-          opacity: 1,
-          duration: 0.4,
-          ease: "ease",
-        },
-        "<"
-      )
-      .to(
-        imgTitle2[i],
-        {
-          opacity: 1,
-          duration: 0.4,
-          ease: "ease",
-        },
-        "<"
-      )
-      .to(imgTitle1[i], {
-        opacity: 0,
-        duration: 0.4,
-        ease: "ease",
-      })
-      .to(
-        imgTitle2[i],
-        {
+      });
+
+    if (i > 0) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: element,
+            start: "0% 50%",
+            end: "0% 50%",
+            scrub: true,
+          },
+        })
+        .to(imgTitle1[i - 1], {
           opacity: 0,
-          duration: 0.4,
-          ease: "ease",
+        })
+        .to(
+          imgTitle2[i - 1],
+          {
+            opacity: 0,
+          },
+          "<"
+        );
+    }
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: "0% 50%",
+          end: "0% 50%",
+          scrub: true,
+        },
+      })
+      .to(imgTitle1[i], {
+        opacity: 1,
+      })
+      .to(
+        imgTitle2[i],
+        {
+          opacity: 1,
         },
         "<"
       );
   });
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec4",
+        start: "106% 50%",
+        end: "106% 50%",
+        scrub: 1,
+      },
+    })
+    .to("body", {
+      backgroundColor: "transparent",
+    });
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec4",
+        start: "100% 60%",
+        end: "108% 60%",
+        scrub: 1,
+      },
+    })
+    .to(".sec4 .bg_video", {
+      opacity: 0,
+      duration: 1,
+    })
+    .to(
+      ".sec4 .bg_video",
+      {
+        display: "none",
+      },
+      "<"
+    )
+    .to(
+      ".sec4 .center_txt",
+      {
+        opacity: 0,
+        duration: 0.1,
+      },
+      "-=.6"
+    )
+    .to(
+      ".sec4 .center_txt",
+      {
+        display: "none",
+      },
+      "<"
+    );
 });
