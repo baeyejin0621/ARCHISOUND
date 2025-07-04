@@ -164,6 +164,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   /*네번째 섹션*/
+  //배경 검정색으로 바꾸기
   gsap
     .timeline({
       scrollTrigger: {
@@ -177,6 +178,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       backgroundColor: "#000",
     });
 
+  //배경 영상이랑 중앙 글자 보이기
   gsap
     .timeline({
       scrollTrigger: {
@@ -243,6 +245,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         color: "var(--main-color)",
       });
 
+    //이전 글자 사라지기
     if (i > 0) {
       gsap
         .timeline({
@@ -265,6 +268,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         );
     }
 
+    //현재 글자 나타나기
     gsap
       .timeline({
         scrollTrigger: {
@@ -286,6 +290,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       );
   });
 
+  //배경하고 중앙 글자 돌려놓기
   gsap
     .timeline({
       scrollTrigger: {
@@ -308,30 +313,127 @@ document.addEventListener("DOMContentLoaded", (event) => {
         scrub: 1,
       },
     })
-    .to(".sec4 .bg_video", {
+    .to(".sec4 .center_txt", {
       opacity: 0,
-      duration: 1,
+      duration: 0.1,
     })
+    .to(
+      ".sec4 .center_txt",
+      {
+        display: "none",
+      },
+      "<"
+    )
+    .to(
+      ".sec4 .bg_video",
+      {
+        opacity: 0,
+        duration: 1,
+      },
+      "-=.5"
+    )
     .to(
       ".sec4 .bg_video",
       {
         display: "none",
       },
       "<"
-    )
-    .to(
-      ".sec4 .center_txt",
-      {
-        opacity: 0,
-        duration: 0.1,
+    );
+
+  //다섯번째 섹션
+  const card = Array.from(document.querySelectorAll(".sec5 .bottom a"));
+  const card1 = card.slice(0, 3);
+  const card2 = card.slice(3, 6);
+  const imgMask = Array.from(
+    document.querySelectorAll(".sec5 .bottom a .img_area .white")
+  );
+  const imgMask1 = imgMask.slice(0, 3);
+  const imgMask2 = imgMask.slice(3, 6);
+  let imgTl1 = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec5",
+        start: "0% 60%",
+        end: "0% 0%",
+        scrub: true, //지워야 함
       },
-      "-=.6"
-    )
-    .to(
-      ".sec4 .center_txt",
+    })
+    .fromTo(
+      ".sec5 .top .row > *",
       {
-        display: "none",
+        y: 100,
+      },
+      {
+        y: 0,
+        duration: 0.3,
+      }
+    )
+    .fromTo(
+      ".sec5 .top p",
+      {
+        y: "20px",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+      }
+    );
+
+  card1.forEach((element) => {
+    imgTl1.fromTo(
+      element,
+      {
+        y: "20px",
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.3,
       },
       "<"
     );
+  });
+
+  imgMask1.forEach((element) => {
+    imgTl1.to(
+      element,
+      {
+        scaleY: 0,
+        duration: 0.5,
+      },
+      "'<"
+    );
+  });
+
+  let imgTl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sec5 .bottom a:nth-child(4)",
+      start: "0% 60%",
+      end: "0% 5%",
+      scrub: true, //지워야 함
+    },
+  });
+
+  card2.forEach((element) => {
+    imgTl2.to(
+      element,
+      {
+        opacity: 1,
+        duration: 0.3,
+      },
+      "<"
+    );
+  });
+
+  imgMask2.forEach((element) => {
+    imgTl2.to(
+      element,
+      {
+        scaleY: 0,
+        duration: 0.5,
+      },
+      "<"
+    );
+  });
 });

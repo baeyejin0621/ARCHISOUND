@@ -511,10 +511,10 @@ section {
 /*배경 영상*/
 .sec4 .bg_video {
   width: 100%;
+  height: 100vh;
   position: fixed;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
   mix-blend-mode: normal;
   opacity: 0;
   display: none;
@@ -611,11 +611,17 @@ section {
 :is(.sec5, .sec7) .top {
   width: 100%;
   height: fit-content;
-  display: flex;
-  justify-content: space-between;
 }
 
-:is(.sec5, .sec7) .top .left h2 {
+:is(.sec5, .sec7) .top .row {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+:is(.sec5, .sec7) .top .row h2 {
   font-weight: 700;
   font-size: 6.4rem;
   font-family: Prompt;
@@ -624,21 +630,22 @@ section {
   text-transform: uppercase;
 }
 
-:is(.sec5, .sec7) .top .left p {
-  margin-top: 0.4166666667vw;
-  font-weight: 400;
-  font-size: 1.1458333333vw;
-  line-height: 1.7;
-}
-
-:is(.sec5, .sec7) .top a {
+:is(.sec5, .sec7) .top .row a {
   display: block;
   width: 3.3333333333vw;
   height: 3.3333333333vw;
 }
 
-:is(.sec5, .sec7) .top a > img {
+:is(.sec5, .sec7) .top .row a > img {
   width: 100%;
+}
+
+:is(.sec5, .sec7) .top p {
+  margin-top: 0.4166666667vw;
+  font-weight: 400;
+  font-size: 1.1458333333vw;
+  line-height: 1.7;
+  opacity: 0;
 }
 
 /*컨텐츠*/
@@ -653,6 +660,7 @@ section {
 .sec5 .bottom a {
   border-top: 4px solid #000;
   width: calc(100% / 3 - calc(2.0833333333vw * 2 / 3));
+  opacity: 0;
 }
 
 .sec5 .bottom a .top_line {
@@ -670,6 +678,20 @@ section {
   width: 100%;
   height: 36.6666666667vw;
   overflow: hidden;
+  position: relative;
+}
+
+.sec5 .bottom a .img_area .white {
+  content: "white";
+  font-size: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom;
 }
 
 .sec5 .bottom a .img_area > img {
