@@ -17,7 +17,7 @@ requestAnimationFrame(raf);
 
 /*gsap*/
 document.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 
   /*헤더*/
   //헤더
@@ -341,21 +341,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
 
   //다섯번째 섹션
+  //카드들
   const card = Array.from(document.querySelectorAll(".sec5 .bottom a"));
+  //윗줄
   const card1 = card.slice(0, 3);
+  //아랫줄
   const card2 = card.slice(3, 6);
+  //이미지
   const imgMask = Array.from(
     document.querySelectorAll(".sec5 .bottom a .img_area .white")
   );
+  //윗줄
   const imgMask1 = imgMask.slice(0, 3);
+  //아랫줄
   const imgMask2 = imgMask.slice(3, 6);
+
+  //섹션 상단 부분
   let imgTl1 = gsap
     .timeline({
       scrollTrigger: {
         trigger: ".sec5",
         start: "0% 60%",
         end: "0% 0%",
-        scrub: true, //지워야 함
       },
     })
     .fromTo(
@@ -380,6 +387,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }
     );
 
+  //카드 윗줄 나타나기
   card1.forEach((element) => {
     imgTl1.fromTo(
       element,
@@ -395,6 +403,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
   });
 
+  //이미지 윗줄 나타나기
   imgMask1.forEach((element) => {
     imgTl1.to(
       element,
@@ -406,15 +415,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
   });
 
+  //아랫줄
   let imgTl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".sec5 .bottom a:nth-child(4)",
       start: "0% 60%",
       end: "0% 5%",
-      scrub: true, //지워야 함
     },
   });
 
+  //카드 아랫줄 나타나기
   card2.forEach((element) => {
     imgTl2.to(
       element,
@@ -426,6 +436,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
   });
 
+  //카드 윗줄 나타나기
   imgMask2.forEach((element) => {
     imgTl2.to(
       element,
@@ -436,4 +447,78 @@ document.addEventListener("DOMContentLoaded", (event) => {
       "<"
     );
   });
+
+  /*여섯번째 섹션*/
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec6",
+        start: "0% 30%",
+        end: "100% 100%",
+      },
+    })
+    .fromTo(
+      ".sec6 h2 p span",
+      {
+        y: "100%",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+      }
+    )
+    .fromTo(
+      ".sec6 .sm_txt",
+      {
+        y: "50px",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+      }
+    );
+
+  /*일곱번째 섹션*/
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sec7",
+        start: "0% 40%",
+        end: "0% 10%",
+      },
+    })
+    .fromTo(
+      ".sec7 .top .row > *",
+      {
+        y: 100,
+      },
+      {
+        y: 0,
+        duration: 0.4,
+      }
+    )
+    .fromTo(
+      ".sec7 .top p",
+      {
+        y: "20px",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+      }
+    )
+    .fromTo(
+      ".sec7 ul",
+      {
+        y: "20px",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+      }
+    );
 });

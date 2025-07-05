@@ -183,3 +183,20 @@ cancelBtn.addEventListener("click", () => {
   searchInput.value = "";
   cancelBtn.style.display = "none";
 });
+
+/*일곱번째 섹션*/
+//li
+const list = document.querySelectorAll(".sec7 ul li");
+//이미지
+const liImg = document.querySelector(".sec7 .img_wrapper");
+
+list.forEach((element, i) => {
+  element.addEventListener("mouseover", () => {
+    document.addEventListener("mousemove", (event) => {
+      liImg.style.top = event.clientY;
+      liImg.style.left = event.clientX;
+      liImg.style.opacity = 1;
+      liImg.children[i].style.transform = "translateY(0)";
+    });
+  });
+});
