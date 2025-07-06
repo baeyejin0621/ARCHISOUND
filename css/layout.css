@@ -721,6 +721,7 @@ section {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   max-height: 5.625vw;
+  opacity: 0;
 }
 
 /*여섯번째 섹션*/
@@ -799,6 +800,12 @@ section {
   display: flex;
   font-weight: 600;
   line-height: 1.7;
+  position: relative;
+  z-index: 10;
+}
+
+.sec7 ul li a > * {
+  mix-blend-mode: difference;
 }
 
 .sec7 ul li a h4 {
@@ -820,10 +827,12 @@ section {
   border-top: 1px solid #5b5151;
 }
 
+/*이미지*/
 .sec7 .img_wrapper {
   width: 27.0833333333vw;
   height: 18.75vw;
-  position: absolute;
+  overflow: hidden;
+  position: fixed;
   left: 0;
   top: 0;
   transform: translate(-50%, -50%);
@@ -836,7 +845,6 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateY(100%);
 }
 
 /*여덟번째 섹션*/

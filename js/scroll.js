@@ -355,6 +355,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const imgMask1 = imgMask.slice(0, 3);
   //아랫줄
   const imgMask2 = imgMask.slice(3, 6);
+  //카드 하단
+  const cardBottom = Array.from(
+    document.querySelectorAll(".sec5 .bottom a .bottom_line")
+  );
+  //윗줄
+  const cardBottom1 = cardBottom.slice(0, 3);
+  //아랫줄
+  const cardBottom2 = cardBottom.slice(3, 6);
 
   //섹션 상단 부분
   let imgTl1 = gsap
@@ -415,6 +423,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
   });
 
+  cardBottom1.forEach((element, i) => {
+    if (i == 0) {
+      imgTl1.to(element, {
+        opacity: 1,
+        duration: 0.3,
+      });
+    } else {
+      imgTl1.to(
+        element,
+        {
+          opacity: 1,
+          duration: 0.3,
+        },
+        "<"
+      );
+    }
+  });
+
   //아랫줄
   let imgTl2 = gsap.timeline({
     scrollTrigger: {
@@ -446,6 +472,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
       },
       "<"
     );
+  });
+
+  cardBottom2.forEach((element, i) => {
+    if (i == 0) {
+      imgTl2.to(element, {
+        opacity: 1,
+        duration: 0.3,
+      });
+    } else {
+      imgTl2.to(
+        element,
+        {
+          opacity: 1,
+          duration: 0.3,
+        },
+        "<"
+      );
+    }
   });
 
   /*여섯번째 섹션*/

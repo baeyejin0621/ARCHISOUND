@@ -185,18 +185,60 @@ cancelBtn.addEventListener("click", () => {
 });
 
 /*일곱번째 섹션*/
+//ul
+const ul = document.querySelector(".sec7 ul");
 //li
 const list = document.querySelectorAll(".sec7 ul li");
 //이미지
 const liImg = document.querySelector(".sec7 .img_wrapper");
 
-list.forEach((element, i) => {
-  element.addEventListener("mouseover", () => {
-    document.addEventListener("mousemove", (event) => {
-      liImg.style.top = event.clientY;
-      liImg.style.left = event.clientX;
-      liImg.style.opacity = 1;
-      liImg.children[i].style.transform = "translateY(0)";
+document.addEventListener("mousemove", (event) => {
+  liImg.style.top = event.clientY + "px";
+  liImg.style.left = event.clientX + "px";
+
+  if (
+    ul.offsetTop <= event.pageY &&
+    event.pageY <= ul.offsetTop + ul.offsetHeight &&
+    ul.offsetLeft <= event.pageX &&
+    event.pageX <= ul.offsetLeft + ul.offsetWidth
+  ) {
+    gsap.to(liImg, {
+      opacity: 1,
+      duration: 0.3,
     });
-  });
+
+    if (
+      list[0].offsetTop <= event.pageY &&
+      event.pageY <= list[0].offsetTop + list[0].offsetHeight
+    ) {
+      console.log("정상 작동 중1");
+      liImg.children[0].style.transform = "translateY(0)";
+      liImg.children[0].style.zIndex = 1;
+      liImg.children[1].style.transform = "translateY(100%)";
+      liImg.children[2].style.transform = "translateY(100%)";
+    } else if (
+      list[1].offsetTop <= event.pageY &&
+      event.pageY <= list[1].offsetTop + list[1].offsetHeight
+    ) {
+      console.log("정상 작동 중2");
+      liImg.children[0].style.transform = "translateY(100%)";
+      liImg.children[1].style.transform = "translateY(0)";
+      liImg.children[1].style.zIndex = 1;
+      liImg.children[2].style.transform = "translateY(100%)";
+    } else if (
+      list[2].offsetTop <= event.pageY &&
+      event.pageY <= list[2].offsetTop + list[2].offsetHeight
+    ) {
+      console.log("정상 작동 중3");
+      liImg.children[0].style.transform = "translateY(100%)";
+      liImg.children[1].style.transform = "translateY(100%)";
+      liImg.children[2].style.transform = "translateY(0)";
+      liImg.children[2].style.zIndex = 1;
+    }
+  } else {
+    gsap.to(liImg, {
+      opacity: 0,
+      duration: 0.3,
+    });
+  }
 });
