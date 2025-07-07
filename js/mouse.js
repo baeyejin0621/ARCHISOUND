@@ -194,7 +194,7 @@ const list = document.querySelectorAll(".sec7 ul li");
 const liImg = document.querySelector(".sec7 .img_wrapper");
 const liImgChildren = Array.from(liImg.children);
 //흰 글씨
-const white = document.querySelectorAll(".sec7 ul li a .white");
+const white = document.querySelectorAll(".sec7 ul .white li");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   //이미지 박스 보이기
@@ -234,6 +234,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     liImgChildren[0].style.transform = "translateY(0)";
     liImgChildren[1].style.transform = "translateY(-100%)";
     liImgChildren[2].style.transform = "translateY(-100%)";
+
+    white[0].style.opacity = 1;
+  });
+
+  list[0].addEventListener("mouseleave", () => {
+    white[0].style.opacity = 0;
   });
 
   //두번째 li에 커서 들어갔을 때
@@ -252,7 +258,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
 
     //커서가 아래에서 올라왔다면
-    if (evt.fromElement.innerText.indexOf("채용") === 0) {
+    if (evt.fromElement.innerText.indexOf("채용") != -1) {
       gsap.fromTo(
         liImgChildren[2],
         {
@@ -276,6 +282,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
       );
     }
+
+    white[1].style.opacity = 1;
   });
 
   //두번째 li에서 커서가 나왔을 때
@@ -292,7 +300,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
 
     //커서가 아래로 내려갔다면
-    if (evt.toElement.innerText.indexOf("채용") === 0) {
+    if (evt.toElement.innerText.indexOf("채용") != -1) {
       gsap.fromTo(
         liImgChildren[2],
         {
@@ -320,6 +328,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
       );
     }
+
+    white[1].style.opacity = 0;
   });
 
   //세번째 li에 커서가 들어갔을 때
@@ -327,6 +337,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     liImgChildren[0].style.transform = "translateY(-100%)";
     liImgChildren[1].style.transform = "translateY(-100%)";
     liImgChildren[2].style.transform = "translateY(0)";
+
+    white[2].style.opacity = 1;
+  });
+
+  list[2].addEventListener("mouseleave", () => {
+    white[2].style.opacity = 0;
   });
 
   //커서가 영역을 벗어나면 없애기
