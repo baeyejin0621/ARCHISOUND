@@ -187,33 +187,34 @@ cancelBtn.addEventListener("click", () => {
 /*일곱번째 섹션*/
 //ul
 const ul = document.querySelector(".sec7 ul");
-console.log(ul.screenY);
 //li
 const list = document.querySelectorAll(".sec7 ul li");
 //이미지
 const liImg = document.querySelector(".sec7 .img_wrapper");
 const liImgChildren = Array.from(liImg.children);
 //흰 글씨
-const white = document.querySelectorAll(".sec7 ul .white li");
+const white = document.querySelectorAll(".sec7 .white li");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   //이미지 박스 보이기
-  ul.addEventListener("mouseenter", () => {
+  ul.addEventListener("mouseenter", (e) => {
     gsap.to(liImg, {
       opacity: 1,
       duration: 0.2,
     });
+
+    liImg.style.top = e.y + "px";
+    liImg.style.left = e.x + "px";
   });
 
   //이미지 박스가 커서를 따라다니게 하기
   ul.addEventListener("mousemove", (e) => {
-    liImg.style.top = e.clientY + "px";
-    liImg.style.left = e.clientX + "px";
+    liImg.style.top = e.y + "px";
+    liImg.style.left = e.x + "px";
 
-    let imgLeft =
-      parseInt(getComputedStyle(liImg).left.slice(0, -2)) -
-      parseInt(getComputedStyle(liImg).width.slice(0, -2) / 2);
     let imgWidth = parseInt(getComputedStyle(liImg).width.slice(0, -2));
+    let imgLeft =
+      parseInt(getComputedStyle(liImg).left.slice(0, -2)) - imgWidth / 2;
 
     white.forEach((element) => {
       element.style.clipPath =
