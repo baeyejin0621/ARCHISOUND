@@ -187,58 +187,153 @@ cancelBtn.addEventListener("click", () => {
 /*일곱번째 섹션*/
 //ul
 const ul = document.querySelector(".sec7 ul");
+console.log(ul.screenY);
 //li
 const list = document.querySelectorAll(".sec7 ul li");
 //이미지
 const liImg = document.querySelector(".sec7 .img_wrapper");
+const liImgChildren = Array.from(liImg.children);
+//흰 글씨
+const white = document.querySelectorAll(".sec7 ul li a .white");
 
-document.addEventListener("mousemove", (event) => {
-  liImg.style.top = event.clientY + "px";
-  liImg.style.left = event.clientX + "px";
-
-  if (
-    ul.offsetTop <= event.pageY &&
-    event.pageY <= ul.offsetTop + ul.offsetHeight &&
-    ul.offsetLeft <= event.pageX &&
-    event.pageX <= ul.offsetLeft + ul.offsetWidth
-  ) {
+document.addEventListener("DOMContentLoaded", (event) => {
+  //이미지 박스 보이기
+  ul.addEventListener("mouseenter", () => {
     gsap.to(liImg, {
       opacity: 1,
-      duration: 0.3,
+      duration: 0.2,
     });
+  });
 
-    if (
-      list[0].offsetTop <= event.pageY &&
-      event.pageY <= list[0].offsetTop + list[0].offsetHeight
-    ) {
-      console.log("정상 작동 중1");
-      liImg.children[0].style.transform = "translateY(0)";
-      liImg.children[0].style.zIndex = 1;
-      liImg.children[1].style.transform = "translateY(100%)";
-      liImg.children[2].style.transform = "translateY(100%)";
-    } else if (
-      list[1].offsetTop <= event.pageY &&
-      event.pageY <= list[1].offsetTop + list[1].offsetHeight
-    ) {
-      console.log("정상 작동 중2");
-      liImg.children[0].style.transform = "translateY(100%)";
-      liImg.children[1].style.transform = "translateY(0)";
-      liImg.children[1].style.zIndex = 1;
-      liImg.children[2].style.transform = "translateY(100%)";
-    } else if (
-      list[2].offsetTop <= event.pageY &&
-      event.pageY <= list[2].offsetTop + list[2].offsetHeight
-    ) {
-      console.log("정상 작동 중3");
-      liImg.children[0].style.transform = "translateY(100%)";
-      liImg.children[1].style.transform = "translateY(100%)";
-      liImg.children[2].style.transform = "translateY(0)";
-      liImg.children[2].style.zIndex = 1;
+  //이미지 박스가 커서를 따라다니게 하기
+  ul.addEventListener("mousemove", (e) => {
+    liImg.style.top = e.clientY + "px";
+    liImg.style.left = e.clientX + "px";
+
+    let imgLeft =
+      parseInt(getComputedStyle(liImg).left.slice(0, -2)) -
+      parseInt(getComputedStyle(liImg).width.slice(0, -2) / 2);
+    let imgWidth = parseInt(getComputedStyle(liImg).width.slice(0, -2));
+
+    white.forEach((element) => {
+      element.style.clipPath =
+        "polygon(" +
+        (imgLeft - ul.offsetLeft) +
+        "px 0px, " +
+        (imgLeft - ul.offsetLeft + imgWidth) +
+        "px 0px, " +
+        (imgLeft - ul.offsetLeft + imgWidth) +
+        "px 200px, " +
+        (imgLeft - ul.offsetLeft) +
+        "px 200px)";
+    });
+  });
+
+  //첫번째 li에 커서 들어갔을 때
+  list[0].addEventListener("mouseenter", () => {
+    liImgChildren[0].style.transform = "translateY(0)";
+    liImgChildren[1].style.transform = "translateY(-100%)";
+    liImgChildren[2].style.transform = "translateY(-100%)";
+  });
+
+  //두번째 li에 커서 들어갔을 때
+  list[1].addEventListener("mouseenter", (evt) => {
+    gsap.fromTo(
+      liImgChildren[1],
+      {
+        y: "100%",
+        scale: 1.3,
+      },
+      {
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+      }
+    );
+
+    //커서가 아래에서 올라왔다면
+    if (evt.fromElement.innerText.indexOf("채용") === 0) {
+      gsap.fromTo(
+        liImgChildren[2],
+        {
+          y: 0,
+        },
+        {
+          y: "-100%",
+          duration: 0.5,
+        }
+      );
+      //커서가 위에서 내려왔다면
+    } else {
+      gsap.fromTo(
+        liImgChildren[0],
+        {
+          y: 0,
+        },
+        {
+          y: "-100%",
+          duration: 0.5,
+        }
+      );
     }
-  } else {
+  });
+
+  //두번째 li에서 커서가 나왔을 때
+  list[1].addEventListener("mouseleave", (evt) => {
+    gsap.fromTo(
+      liImgChildren[1],
+      {
+        y: 0,
+      },
+      {
+        y: "-100%",
+        duration: 0.5,
+      }
+    );
+
+    //커서가 아래로 내려갔다면
+    if (evt.toElement.innerText.indexOf("채용") === 0) {
+      gsap.fromTo(
+        liImgChildren[2],
+        {
+          y: "100%",
+          scale: 1.3,
+        },
+        {
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+        }
+      );
+      //커서가 위로 올라갔다면
+    } else {
+      gsap.fromTo(
+        liImgChildren[0],
+        {
+          y: "100%",
+          scale: 1.3,
+        },
+        {
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+        }
+      );
+    }
+  });
+
+  //세번째 li에 커서가 들어갔을 때
+  list[2].addEventListener("mouseenter", () => {
+    liImgChildren[0].style.transform = "translateY(-100%)";
+    liImgChildren[1].style.transform = "translateY(-100%)";
+    liImgChildren[2].style.transform = "translateY(0)";
+  });
+
+  //커서가 영역을 벗어나면 없애기
+  ul.addEventListener("mouseleave", () => {
     gsap.to(liImg, {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.2,
     });
-  }
+  });
 });
