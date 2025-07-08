@@ -707,12 +707,8 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  transition: 0.2s;
   pointer-events: none;
-}
-
-.sec5 .bottom a .img_area:hover .hover-lottie {
-  backdrop-filter: blur(15px);
+  display: none;
 }
 
 .sec5 .bottom a .img_area .hover-lottie path {
