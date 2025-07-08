@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           {
             strokeDashoffset: 0,
             duration: 1.2,
+            ease: "ease",
           },
           "<"
         )
@@ -50,6 +51,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           {
             strokeDashoffset: 0,
             duration: 1.2,
+            ease: "ease",
           },
           "<"
         )

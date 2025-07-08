@@ -354,3 +354,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   });
 });
+
+/*플로팅 버튼*/
+const floatBtn = document.querySelector(".floating");
+
+floatBtn.addEventListener("click", () => {
+  if (
+    getComputedStyle(floatBtn).backgroundColor == "rgba(247, 247, 247, 0.85)"
+  ) {
+    //배경색
+    floatBtn.style.backgroundColor = "rgba(248, 182, 45, 0.8509803922)";
+
+    //사진
+    floatBtn.children[0].setAttribute(
+      "src",
+      "./img/sec7/main_sound_play_ico.png"
+    );
+
+    floatBtn.children[0].setAttribute("alt", "음악 나옴");
+
+    //글자
+    floatBtn.children[1].innerText = "sound on";
+  } else if (
+    getComputedStyle(floatBtn).backgroundColor == "rgba(248, 182, 45, 0.85)"
+  ) {
+    //배경색
+    floatBtn.style.backgroundColor = "";
+
+    //사진
+    floatBtn.children[0].setAttribute(
+      "src",
+      "./img/sec7/main_sound_stop_ico.png"
+    );
+
+    floatBtn.children[0].setAttribute("alt", "음악 멈춤");
+
+    //글자
+    floatBtn.children[1].innerText = "sound off";
+  }
+});
