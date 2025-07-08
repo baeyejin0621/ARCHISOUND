@@ -696,16 +696,28 @@ section {
 
 .sec5 .bottom a .img_area > img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-/*이미지에 호버하면 나타날 이미지*/
+/*이미지에 호버하면 나타날 svg*/
 .sec5 .bottom a .img_area .hover-lottie {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.sec5 .bottom a .img_area:hover .hover-lottie {
+  backdrop-filter: blur(15px);
+}
+
+.sec5 .bottom a .img_area .hover-lottie path {
+  stroke-dashoffset: 1000;
+  stroke-dasharray: 1000;
 }
 
 /*제목*/
@@ -821,6 +833,21 @@ section {
 
 .sec7 ul li:not(:first-child) {
   border-top: 1px solid #5b5151;
+}
+
+/*사진 위에 보일 용*/
+.sec7 .black {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 4.7916666667vw 12.5vw;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  pointer-events: none;
+}
+
+.sec7 .black li:not(:first-child) {
+  border-top: 1px solid transparent;
 }
 
 /*흰색 버전*/
