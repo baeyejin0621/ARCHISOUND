@@ -1094,3 +1094,87 @@ footer .bottom .bottom_line .right a {
   width: 2.5vw;
   height: 2.5vw;
 }
+
+/*인트로 화면*/
+.intro_bg {
+  display: none;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+}
+
+.intro_bg .music {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.3020833333vw;
+}
+
+.intro_bg .music button {
+  width: 72px;
+  height: 72px;
+  border-radius: 100%;
+  background-color: #fff;
+  position: relative;
+}
+
+.intro_bg .music button > img {
+  width: 28px;
+  height: 23px;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro_bg .music .fade {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #838383;
+  width: 72px;
+  height: 72px;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.intro_bg .music p {
+  margin-top: 5.2083333333vw;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.0416666667vw;
+  line-height: 1.7;
+  opacity: 0;
+}
+
+.intro_bg .logo {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+.intro_bg .logo .intro-lottie {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  width: 29.1666666667vw;
+  height: 5.7291666667vw;
+}
+
+.intro_bg .logo .intro-lottie path {
+  stroke-dashoffset: 1000;
+  stroke-dasharray: 1000;
+}
