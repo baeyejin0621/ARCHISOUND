@@ -18,9 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoPath2 = document.querySelectorAll(
     ".intro_bg .logo .intro-lottie > svg > g > g > g:nth-last-of-type(2) > :is(g:nth-child(3), g:nth-child(4)) path"
   );
-  const logoTxt = document.querySelectorAll(
-    ".intro_bg .logo .intro-lottie > svg > g > g > g:not(:is(:nth-last-of-type(1), :nth-last-of-type(2)))"
+  let logoTxt = Array.from(
+    document.querySelectorAll(
+      ".intro_bg .logo .intro-lottie > svg > g > g > g:not(:is(:nth-last-of-type(1), :nth-last-of-type(2)) path)"
+    )
   );
+  logoTxt = logoTxt.reverse();
 
   //배경
   gsap
@@ -77,24 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         });
 
-        //크기 약간 작아지기
+        //크기 작아지기
         tl.to(
-          introLottie,
-          {
-            width: "77%",
-            height: "77%",
-            duration: 0.5,
-          },
-          "-=.5"
-          //크기 작아지기
-        ).to(
           introLottie,
           {
             width: 500,
             height: 200,
-            duration: 0.3,
+            duration: 0.5,
+            ease: "power4.inOut",
           },
-          ">"
+          "-=.6"
         );
 
         //노란 로고 나타나기
@@ -110,15 +105,29 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         });
 
-        tl.to(logoTxt, {
-          display: "block",
+        tl.to(logoPath, {
+          x: -90,
+        });
+
+        logoTxt.forEach((element) => {
+          tl.to(
+            element,
+            {
+              x: 350,
+              duration: 0.3,
+              strokeDashoffset: 0,
+            },
+            "<"
+          );
         });
       },
     })
+    //음악 버튼 크기 약간씩 변하기
     .to(musicBtn, {
       scale: 1,
       duration: 0.1,
     })
+    //울리는 것 같은 효과 주기
     .fromTo(
       fade,
       {
@@ -152,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ">"
     );
 
+  //밑에 글 나타나기
   gsap.to(musicP, {
     delay: 0.8,
     opacity: 1,

@@ -1174,7 +1174,7 @@ footer .bottom .bottom_line .right a {
   height: 5.7291666667vw;
 }
 
-.intro_bg .logo .intro-lottie path {
+.intro_bg .logo .intro-lottie svg > g > g > g:nth-last-of-type(2) path {
   stroke-dashoffset: 1000;
   stroke-dasharray: 1000;
 }
