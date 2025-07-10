@@ -1170,11 +1170,37 @@ footer .bottom .bottom_line .right a {
   top: 50%;
   left: 50%;
   pointer-events: none;
-  width: 29.1666666667vw;
-  height: 5.7291666667vw;
+  width: fit-content;
+  height: fit-content;
 }
 
-.intro_bg .logo .intro-lottie svg > g > g > g:nth-last-of-type(2) path {
+.intro_bg .logo .intro-lottie .logo_icon {
+  width: 79vw;
+  height: 79vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g path {
   stroke-dashoffset: 1000;
   stroke-dasharray: 1000;
+}
+
+.intro_bg .logo .logo_txt {
+  width: 0;
+  height: 200px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+}
+
+.intro_bg .logo .logo_txt svg > g > g > g {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }

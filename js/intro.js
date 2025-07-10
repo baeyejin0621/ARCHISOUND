@@ -8,22 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const fade = document.querySelector(".intro_bg .music .fade");
   const musicP = document.querySelector(".intro_bg .music p");
   const logoArea = document.querySelector(".intro_bg .logo");
-  const introLottie = document.querySelector(".intro_bg .intro-lottie");
+  const logoIcon = document.querySelector(".intro_bg .logo .logo_icon");
   const logoPath = document.querySelector(
-    ".intro_bg .logo .intro-lottie > svg > g > g > g:nth-last-of-type(2)"
+    ".intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g"
   );
   const logoPath1 = document.querySelectorAll(
-    ".intro_bg .logo .intro-lottie > svg > g > g > g:nth-last-of-type(2) > :is(g:nth-child(1), g:nth-child(2)) path"
+    ".intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g > :is(g:nth-of-type(1), g:nth-of-type(2)) path"
   );
   const logoPath2 = document.querySelectorAll(
-    ".intro_bg .logo .intro-lottie > svg > g > g > g:nth-last-of-type(2) > :is(g:nth-child(3), g:nth-child(4)) path"
+    ".intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g > :is(g:nth-of-type(3), g:nth-of-type(4)) path"
   );
-  let logoTxt = Array.from(
-    document.querySelectorAll(
-      ".intro_bg .logo .intro-lottie > svg > g > g > g:not(:is(:nth-last-of-type(1), :nth-last-of-type(2)) path)"
+  const logoTxt = document.querySelector(".intro_bg .logo .logo_txt");
+  let logoTxtChildren = Array.from(
+    document.querySelector(
+      ".intro_bg .logo .intro-lottie .logo_txt > svg > g > g > g:not(:last-of-type)"
     )
   );
-  logoTxt = logoTxt.reverse();
+  logoTxtChildren = logoTxtChildren.reverse();
 
   //배경
   gsap
@@ -52,11 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           //로고
           .add(() => {
-            logoArea.style.display = "block";
+            //로고 중앙으로 옮기기
+            logoPath.style.transform =
+              "matrix(1.000001311302185,0,0,1.000001311302185,283.13,-0.06308)";
+            logoPath.style.transition = "0.5s";
 
-            //로고 크기 키우기
-            introLottie.style.width = "79%";
-            introLottie.style.height = "79%";
+            //로고 영역 보이기
+            logoArea.style.display = "block";
 
             //노란 로고 숨겨두기
             logoPath2.forEach((element) => {
@@ -82,14 +85,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //크기 작아지기
         tl.to(
-          introLottie,
+          logoIcon,
+          {
+            width: "76vw",
+            height: "76vw",
+            duration: 2,
+            ease: "power4.inOut",
+          },
+          "<"
+        ).to(
+          logoIcon,
           {
             width: 500,
             height: 200,
             duration: 0.5,
             ease: "power4.inOut",
           },
-          "-=.6"
+          "-=.3"
         );
 
         //노란 로고 나타나기
@@ -105,21 +117,23 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         });
 
+        //로고 움직이기
         tl.to(logoPath, {
-          x: -90,
-        });
-
-        logoTxt.forEach((element) => {
-          tl.to(
-            element,
+          x: -79.208251953125,
+          duration: 0.5,
+        })
+          //로고 글자 나타나기
+          .fromTo(
+            logoTxt,
             {
-              x: 350,
-              duration: 0.3,
-              strokeDashoffset: 0,
+              width: 0,
+            },
+            {
+              width: 500,
+              transition: 0.8,
             },
             "<"
           );
-        });
       },
     })
     //음악 버튼 크기 약간씩 변하기
