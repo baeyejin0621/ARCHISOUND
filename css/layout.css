@@ -1195,12 +1195,9 @@ footer .bottom .bottom_line .right a {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .intro_bg .logo .logo_txt svg > g > g > g {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  transform: translate(0, -50%);
 }

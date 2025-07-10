@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ".intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g > :is(g:nth-of-type(3), g:nth-of-type(4)) path"
   );
   const logoTxt = document.querySelector(".intro_bg .logo .logo_txt");
-  let logoTxtChildren = Array.from(
-    document.querySelector(
-      ".intro_bg .logo .intro-lottie .logo_txt > svg > g > g > g:not(:last-of-type)"
-    )
+  const logoTxtInner = document.querySelector(
+    ".intro_bg .logo .logo_txt > svg > g > g"
   );
-  logoTxtChildren = logoTxtChildren.reverse();
+  let logoTxtChildren = Array.from(logoTxtInner.children);
+  console.log(logoTxtChildren);
+  logoTxtChildren = logoTxtChildren.pop();
 
   //배경
   gsap
@@ -53,10 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           //로고
           .add(() => {
-            //로고 중앙으로 옮기기
+            //로고 아이콘 중앙으로 옮기기
             logoPath.style.transform =
               "matrix(1.000001311302185,0,0,1.000001311302185,283.13,-0.06308)";
             logoPath.style.transition = "0.5s";
+
+            //로고 글자 위치 맞추기
+            logoTxtInner.style.transform =
+              "matrix(0.500002920627594,0,0,0.500002920627594,-0.0014603137969970703,50)";
 
             //로고 영역 보이기
             logoArea.style.display = "block";
@@ -134,6 +138,20 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             "<"
           );
+
+        logoTxtChildren.forEach((element) => {
+          tl.fromTo(
+            element,
+            {
+              transform: "translate(-100px, -50%)",
+            },
+            {
+              transform: "translate(0, -50%)",
+              duration: 0.5,
+            },
+            "<"
+          );
+        });
       },
     })
     //음악 버튼 크기 약간씩 변하기
