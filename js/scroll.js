@@ -184,12 +184,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
       scrollTrigger: {
         trigger: ".sec4",
         start: "0% 100%",
-        end: "20% 100%",
+        end: "120% 60%",
         scrub: 1,
       },
     })
     .to(".sec4 .bg_video", {
       display: "block",
+      duration: 0.01,
     })
     .to(
       ".sec4 .bg_video",
@@ -203,19 +204,57 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ".sec4 .center_txt",
       {
         display: "block",
+        duration: 0.01,
       },
-      "-=.8"
+      "-=1"
     )
     .fromTo(
       ".sec4 .center_txt",
       {
-        opacity: 0,
-        y: "-38% + 100px",
+        y: "50px",
       },
       {
         opacity: 1,
-        y: "-38%",
+        y: 0,
+        duration: 0.2,
+      },
+      "-=.7"
+    )
+    //없어지기
+    .to(".sec4 .center_txt", {
+      opacity: 0,
+      duration: 0.3,
+      delay: 3,
+    })
+    .to(
+      ".sec4 .center_txt",
+      {
+        display: "none",
+        duration: 0.01,
+      },
+      ">"
+    )
+    .to(
+      ".sec4 .bg_video",
+      {
+        opacity: 0,
         duration: 0.1,
+      },
+      "<"
+    )
+    .to(
+      ".sec4 .bg_video",
+      {
+        display: "none",
+        duration: 0.01,
+      },
+      ">"
+    )
+    .to(
+      "body",
+      {
+        backgroundColor: "#fff",
+        duraion: 0.01,
       },
       "<"
     );
@@ -291,54 +330,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   //배경하고 중앙 글자 돌려놓기
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".sec4",
-        start: "106% 50%",
-        end: "106% 50%",
-        scrub: 1,
-      },
-    })
-    .to("body", {
-      backgroundColor: "transparent",
-    });
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sec4",
+      start: "106% 50%",
+      end: "106% 50%",
+      scrub: 1,
+    },
+  });
 
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".sec4",
-        start: "100% 60%",
-        end: "108% 60%",
-        scrub: 1,
-      },
-    })
-    .to(".sec4 .center_txt", {
-      opacity: 0,
-      duration: 0.1,
-    })
-    .to(
-      ".sec4 .center_txt",
-      {
-        display: "none",
-      },
-      "<"
-    )
-    .to(
-      ".sec4 .bg_video",
-      {
-        opacity: 0,
-        duration: 1,
-      },
-      "-=.5"
-    )
-    .to(
-      ".sec4 .bg_video",
-      {
-        display: "none",
-      },
-      "<"
-    );
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sec4",
+      start: "100% 60%",
+      end: "108% 60%",
+      scrub: 1,
+    },
+  });
 
   //다섯번째 섹션
   //카드들

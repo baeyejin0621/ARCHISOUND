@@ -393,3 +393,45 @@ floatBtn.addEventListener("click", () => {
     floatBtn.children[1].innerText = "sound off";
   }
 });
+
+/*커서 따라다니는 요소*/
+const cursor = document.querySelector(".cursor");
+const cursorIcon = document.querySelector(".cursor_icon");
+window.addEventListener("mousemove", (event) => {
+  cursor.style.top = event.clientY + "px";
+  cursor.style.left = event.clientX + "px";
+});
+
+document.addEventListener("mouseenter", () => {
+  cursor.style.opacity = 1;
+});
+
+document.addEventListener("mouseleave", () => {
+  cursor.style.opacity = 0;
+});
+
+const cursorChange = document.querySelectorAll("a, button");
+cursorChange.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    cursor.style.mixBlendMode = "normal";
+    cursorIcon.style.transform = "scale(0.3)";
+    cursorIcon.style.backgroundColor = "var(--main-color)";
+    cursorIcon.style.border = "1px solid var(--main-color)";
+  });
+
+  element.addEventListener("mouseleave", () => {
+    cursor.style.mixBlendMode = "difference";
+    cursorIcon.style.transform = "";
+    cursorIcon.style.backgroundColor = "";
+    cursorIcon.style.border = "";
+  });
+});
+
+const goTop = document.querySelector("footer .top button");
+goTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});

@@ -1,8 +1,16 @@
 "use strict";
 
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 100);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(MotionPathPlugin);
+  const intro = document.querySelector(".intro");
   const introBg = document.querySelector(".intro_bg");
+  const introBg1 = document.querySelector(".intro_bg1");
   const music = document.querySelector(".intro_bg .music");
   const musicBtn = document.querySelector(".intro_bg .music button");
   const fade = document.querySelector(".intro_bg .music .fade");
@@ -18,13 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoPath2 = document.querySelectorAll(
     ".intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g > :is(g:nth-of-type(3), g:nth-of-type(4)) path"
   );
-  const logoTxt = document.querySelector(".intro_bg .logo .logo_txt");
+  const logoTxtBlack = document.querySelector(".logo_txt .black");
   const logoTxtInner = document.querySelector(
     ".intro_bg .logo .logo_txt > svg > g > g"
   );
-  let logoTxtChildren = Array.from(logoTxtInner.children);
-  console.log(logoTxtChildren);
-  logoTxtChildren = logoTxtChildren.pop();
+  let logoTxtChildren = Array.from(
+    document.querySelectorAll(
+      ".intro_bg .logo .logo_txt > svg > g > g > g path"
+    )
+  );
+  logoTxtChildren.reverse();
+  const mainTopTxt = document.querySelector(".main_visual .top_txt");
+  const mainTxt = document.querySelectorAll(".main_visual .main_txt p span");
+  const mainBottomTxt = document.querySelector(".main_visual .bottom_txt");
+  const sec2 = document.querySelector(".sec2");
 
   //배경
   gsap
@@ -33,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       overflow: "hidden",
     })
     .to(
-      introBg,
+      intro,
       {
         display: "block",
       },
@@ -95,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             height: "76vw",
             duration: 2,
             ease: "power4.inOut",
+            delay: 0.1,
           },
           "<"
         ).to(
@@ -105,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             duration: 0.5,
             ease: "power4.inOut",
           },
-          "-=.3"
+          "-=.2"
         );
 
         //노란 로고 나타나기
@@ -124,34 +140,171 @@ document.addEventListener("DOMContentLoaded", () => {
         //로고 움직이기
         tl.to(logoPath, {
           x: -79.208251953125,
-          duration: 0.5,
+          duration: 0.2,
+          delay: 0.2,
         })
-          //로고 글자 나타나기
-          .fromTo(
-            logoTxt,
+          //검정 가림막 div 너비 조절
+          .to(
+            logoTxtBlack,
             {
-              width: 0,
-            },
-            {
-              width: 500,
-              transition: 0.8,
-            },
-            "<"
-          );
-
-        logoTxtChildren.forEach((element) => {
-          tl.fromTo(
-            element,
-            {
-              transform: "translate(-100px, -50%)",
-            },
-            {
-              transform: "translate(0, -50%)",
+              width: 92,
               duration: 0.5,
             },
             "<"
           );
+
+        //로고 글자 하나씩 나타나기
+        logoTxtChildren.forEach((element, i) => {
+          if (i === 0) {
+            tl.fromTo(
+              element,
+              {
+                x: -900,
+              },
+              {
+                x: 0,
+                duration: 0.25,
+                ease: "power1.inOut",
+              },
+              "-=.5"
+            );
+          } else if (i < 5) {
+            tl.fromTo(
+              element,
+              {
+                x: -900,
+              },
+              {
+                x: 0,
+                duration: 0.25,
+                ease: "power1.inOut",
+              },
+              "<"
+            );
+          } else if (i === 5) {
+            tl.fromTo(
+              element,
+              {
+                x: -900,
+              },
+              {
+                x: 0,
+                duration: 0.25,
+                ease: "power1.inOut",
+              },
+              "-=.45"
+            );
+          } else {
+            tl.fromTo(
+              element,
+              {
+                x: -900,
+              },
+              {
+                x: 0,
+                duration: 0.25,
+                ease: "power1.inOut",
+              },
+              `-=${0.45 - (i - 5) * 0.035}`
+            );
+          }
         });
+
+        //로고 사라지기
+        tl.to(logoArea, {
+          opacity: 0,
+          delay: 0.6,
+          duration: 0.2,
+        })
+          //인트로 화면 올라가기
+          .to(
+            introBg,
+            {
+              y: "-100%",
+              duration: 0.4,
+              ease: "power1.inOut",
+            },
+            "-=.1"
+          )
+          .to(
+            "body",
+            {
+              overflow: "auto",
+            },
+            "<"
+          )
+          .to(
+            introBg1,
+            {
+              y: "-100%",
+              duration: 0.4,
+            },
+            "-=.3"
+          )
+          .to(intro, {
+            display: "none",
+          })
+          //메인 비주얼 글자들 순서대로 나타나기
+          .fromTo(
+            mainTopTxt,
+            {
+              y: 30,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+            },
+            "-=.9"
+          );
+
+        mainTxt.forEach((element, i) => {
+          if (i == 0) {
+            tl.to(
+              element,
+              {
+                y: 0,
+                duration: 0.3,
+              },
+              "-=.6"
+            );
+          } else {
+            tl.to(
+              element,
+              {
+                y: 0,
+                duration: 0.3,
+              },
+              `-=.${6 - i * 0.5}`
+            );
+          }
+        });
+
+        tl.fromTo(
+          mainBottomTxt,
+          {
+            y: 30,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+          },
+          "<"
+        )
+          //두번째 섹션 나타나기
+          .fromTo(
+            sec2,
+            {
+              y: 30,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+            },
+            "-=.4"
+          );
       },
     })
     //음악 버튼 크기 약간씩 변하기
