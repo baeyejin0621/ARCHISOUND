@@ -1,0 +1,34 @@
+@charset "urf-8";
+
+@media screen and (min-width: 320px) {
+  /*문서 전체 설정*/
+  html {
+    font-size: calc(10px + 20 * (100vw - 375px) / 500);
+    cursor: default;
+  }
+
+  /*헤더*/
+  header {
+    height: 7.2rem;
+  }
+
+  header .progress_bar {
+    display: none;
+  }
+
+  header .inner_header {
+    height: 100%;
+    padding: 0 2rem;
+  }
+
+  /*로고*/
+  h1 {
+    width: 16.2rem;
+    height: 2.4rem;
+  }
+
+  /*gnb*/
+  #gnb {
+    display: none;
+  }
+}
