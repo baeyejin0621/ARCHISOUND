@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
               },
               {
                 x: 0,
-                duration: 0.25,
+                duration: 0.4,
                 ease: "power1.inOut",
               },
               "-=.5"
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
               },
               {
                 x: 0,
-                duration: 0.25,
+                duration: 0.4,
                 ease: "power1.inOut",
               },
               "<"
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
               },
               {
                 x: 0,
-                duration: 0.25,
+                duration: 0.4,
                 ease: "power1.inOut",
               },
               "-=.45"
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
               },
               {
                 x: 0,
-                duration: 0.25,
+                duration: 0.4,
                 ease: "power1.inOut",
               },
               `-=${0.45 - (i - 5) * 0.035}`

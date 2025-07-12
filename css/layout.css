@@ -7,6 +7,7 @@
 
 html {
   font-size: 10px;
+  cursor: none;
 }
 
 body {
@@ -968,6 +969,7 @@ section {
   position: sticky;
   left: 85.7291666667vw;
   bottom: 64px;
+  cursor: pointer;
 }
 
 .floating img {
