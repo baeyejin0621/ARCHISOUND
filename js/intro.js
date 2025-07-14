@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   logoTxtChildren.reverse();
   const mainTopTxt = document.querySelector(".main_visual .top_txt");
-  const mainTxt = document.querySelectorAll(".main_visual .main_txt p span");
   const mainBottomTxt = document.querySelector(".main_visual .bottom_txt");
   const sec2 = document.querySelector(".sec2");
 
@@ -61,6 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //브라우저 너비가 1024px 이하일 때
   gsap.matchMedia().add("(max-width: 1024px)", () => {
+    const mainTxt = document.querySelectorAll(
+      ".main_visual .main_txt.mobile p span"
+    );
+
     //음악
     gsap
       .timeline({
@@ -76,12 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
             .add(() => {
               //로고 아이콘 중앙으로 옮기기
               logoPath.style.transform =
-                "matrix(1.000001311302185,0,0,1.000001311302185,283.13,-0.06308)";
-              logoPath.style.transition = "0.5s";
+                "matrix(1.000001311302185,0,0,1.000001311302185,303.13,-0.06308)";
+              logoPath.style.transition = "0.2s";
 
               //로고 글자 위치 맞추기
               logoTxtInner.style.transform =
-                "matrix(0.500002920627594,0,0,0.500002920627594,-0.0014603137969970703,50)";
+                "matrix(0.250002920627594,0,0,0.250002920627594,120.0014603137969970703,75)";
 
               //로고 영역 보이기
               logoArea.style.display = "block";
@@ -112,22 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
           tl.to(
             logoIcon,
             {
-              width: "76vw",
-              height: "76vw",
-              duration: 2,
-              ease: "power4.inOut",
-              delay: 0.1,
-            },
-            "<"
-          ).to(
-            logoIcon,
-            {
-              width: 500,
-              height: 200,
+              width: "50%",
+              height: "50%",
               duration: 0.5,
               ease: "power4.inOut",
             },
-            "-=.2"
+            ">"
           );
 
           //노란 로고 나타나기
@@ -145,16 +138,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
           //로고 움직이기
           tl.to(logoPath, {
-            x: -79.208251953125,
-            duration: 0.2,
+            x: -102.208251953125,
+            duration: 0.1,
             delay: 0.2,
           })
             //검정 가림막 div 너비 조절
             .to(
               logoTxtBlack,
               {
-                width: 92,
-                duration: 0.5,
+                width: 165,
+                duration: 0.3,
               },
               "<"
             );
@@ -260,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 opacity: 1,
                 duration: 0.5,
               },
-              "-=.6"
+              "-=.7"
             );
 
           mainTxt.forEach((element, i) => {
@@ -280,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   y: 0,
                   duration: 0.3,
                 },
-                `-=.${6 - i * 0.4}`
+                `-=.${7 - i * 0.55}`
               );
             }
           });
@@ -295,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
               opacity: 1,
               duration: 0.5,
             },
-            "-=.8"
+            "-=.5"
           )
             //두번째 섹션 나타나기
             .fromTo(
@@ -361,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //브라우저 너비가 1025px 이상일 때
   gsap.matchMedia().add("(min-width: 1025px)", () => {
+    const mainTxt = document.querySelectorAll(".main_visual .main_txt p span");
     //음악
     gsap
       .timeline({
@@ -376,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .add(() => {
               //로고 아이콘 중앙으로 옮기기
               logoPath.style.transform =
-                "matrix(1.000001311302185,0,0,1.000001311302185,283.13,-0.06308)";
+                "matrix(1.000001311302185,0,0,1.000001311302185,303.13,-0.06308)";
               logoPath.style.transition = "0.5s";
 
               //로고 글자 위치 맞추기
@@ -412,8 +406,8 @@ document.addEventListener("DOMContentLoaded", () => {
           tl.to(
             logoIcon,
             {
-              width: "76vw",
-              height: "76vw",
+              width: "380%",
+              height: "380%",
               duration: 2,
               ease: "power4.inOut",
               delay: 0.1,

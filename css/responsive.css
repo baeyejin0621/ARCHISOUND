@@ -494,6 +494,15 @@
     word-break: keep-all;
   }
 
+  .intro_bg .logo .intro-lottie .logo_icon {
+    width: 130%;
+    height: 130%;
+  }
+
+  .intro_bg .logo .logo_txt .black {
+    width: 268px;
+  }
+
   /*커서*/
   .cursor {
     display: none;

@@ -1411,8 +1411,8 @@ footer .bottom .bottom_line .right a > img {
 }
 
 .intro_bg .logo .intro-lottie .logo_icon {
-  width: 79vw;
-  height: 79vw;
+  width: 390%;
+  height: 390%;
   position: absolute;
   top: 50%;
   left: 50%;
