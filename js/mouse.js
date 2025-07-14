@@ -139,6 +139,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   /*브라우저가 모바일 크기일 때 메뉴*/
+  //lenis 강제 스크롤 막기
+  let lenisPrevent = document.createAttribute("data-lenis-prevent-wheel");
   gsap.matchMedia().add("(min-width: 320px)", () => {
     const headerBtn = document.querySelectorAll(".icons button");
     const mobileMenu = document.querySelector(".mobile_menu");
@@ -147,12 +149,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ".mobile_menu .search_wrap input"
     );
     const remove = document.querySelector(
-      ".mobile_menu .search_wrap button:last-child"
+      ".mobile_menu .search_wrap button:first-child"
     );
 
+    //헤더 아이콘 클릭하면 메뉴창 오른쪽에서 나오기
     headerBtn.forEach((element) => {
       element.addEventListener("click", () => {
-        document.documentElement.style.overflow = "hidden";
+        document.querySelector("body").setAttributeNode(lenisPrevent);
+        document.querySelector("body").style.overflowY = "hidden";
         gsap.to(mobileMenu, {
           x: 0,
           duration: 0.3,
@@ -160,12 +164,64 @@ document.addEventListener("DOMContentLoaded", (event) => {
       });
     });
 
+    //닫기 버튼 누르면 메뉴창 오른쪽으로 사라지기
     close.addEventListener("click", () => {
-      document.documentElement.style.overflow = "auto";
+      document
+        .querySelector("body")
+        .removeAttribute("data-lenis-prevent-wheel");
+      document.querySelector("body").style.overflowY = "auto";
       gsap.to(mobileMenu, {
         x: "100%",
         duration: 0.3,
       });
+    });
+
+    searchInput.addEventListener("keydown", () => {
+      if (searchInput.value) {
+        remove.style.display = "block";
+      }
+    });
+
+    remove.addEventListener("click", () => {
+      searchInput.value = "";
+      remove.style.display = "none";
+    });
+
+    //2차 메뉴 나오기
+    const oneDepth = document.querySelector(
+      "#mobile_menu > ul > li:nth-child(2)"
+    );
+    const submenu = document.querySelector("#mobile_menu .submenu");
+    const twoDepthButton = document.querySelector(
+      "#mobile_menu > ul > li:nth-child(2) > a > button"
+    );
+
+    oneDepth.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (
+        getComputedStyle(oneDepth.children[0]).color == "rgb(255, 255, 255)"
+      ) {
+        oneDepth.children[0].style.color = "var(--main-color)";
+        oneDepth.children[0].style.borderBottom =
+          "0.1rem solid var(--main-color)";
+        submenu.style.display = "block";
+        twoDepthButton.style.transform = "rotate(180deg)";
+        twoDepthButton.children[0].setAttribute(
+          "src",
+          "./img/header/ico_arrow_down_on.png"
+        );
+      } else if (
+        getComputedStyle(oneDepth.children[0]).color == "rgb(248, 182, 45)"
+      ) {
+        oneDepth.children[0].style.color = "";
+        oneDepth.children[0].style.borderBottom = "";
+        submenu.style.display = "";
+        twoDepthButton.style.transform = "";
+        twoDepthButton.children[0].setAttribute(
+          "src",
+          "./img/header/ico_arrow_down_mo.png"
+        );
+      }
     });
   });
 
@@ -187,12 +243,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     //버튼 클릭하면 나오기
     searchBtn.addEventListener("click", () => {
-      document.documentElement.style.overflow = "hidden";
+      document.querySelector("body").setAttributeNode(lenisPrevent);
+      document.querySelector("body").style.overflowY = "hidden";
       searchArea.style.transform = "translateY(0)";
     });
 
     allMenuBtn.addEventListener("click", () => {
-      document.documentElement.style.overflow = "hidden";
+      document.querySelector("body").setAttributeNode(lenisPrevent);
+      document.querySelector("body").style.overflowY = "hidden";
       allMenu.style.transform = "translateY(0)";
     });
 
@@ -200,7 +258,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     closeBtn.forEach((element) => {
       element.addEventListener("click", () => {
         element.parentElement.parentNode.style.transform = "translateY(-100%)";
-        document.documentElement.style.overflow = "auto";
+        document
+          .querySelector("body")
+          .removeAttribute("data-lenis-prevent-wheel");
+        document.querySelector("body").style.overflowY = "auto";
       });
     });
 
@@ -229,114 +290,58 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //흰 글씨
   const white = document.querySelectorAll(".sec7 .white li");
 
-  //이미지 박스 보이기
-  ul.addEventListener("mouseenter", (e) => {
-    gsap.to(liImg, {
-      opacity: 1,
-      duration: 0.2,
+  gsap.matchMedia().add("(min-width: 1025px)", () => {
+    //이미지 박스 보이기
+    ul.addEventListener("mouseenter", (e) => {
+      gsap.to(liImg, {
+        opacity: 1,
+        duration: 0.2,
+      });
+
+      liImg.style.top = e.y + "px";
+      liImg.style.left = e.x + "px";
     });
 
-    liImg.style.top = e.y + "px";
-    liImg.style.left = e.x + "px";
-  });
+    //이미지 박스가 커서를 따라다니게 하기
+    ul.addEventListener("mousemove", (e) => {
+      liImg.style.top = e.y + "px";
+      liImg.style.left = e.x + "px";
 
-  //이미지 박스가 커서를 따라다니게 하기
-  ul.addEventListener("mousemove", (e) => {
-    liImg.style.top = e.y + "px";
-    liImg.style.left = e.x + "px";
+      let imgWidth = parseInt(getComputedStyle(liImg).width.slice(0, -2));
+      let imgLeft =
+        parseInt(getComputedStyle(liImg).left.slice(0, -2)) - imgWidth / 2;
 
-    let imgWidth = parseInt(getComputedStyle(liImg).width.slice(0, -2));
-    let imgLeft =
-      parseInt(getComputedStyle(liImg).left.slice(0, -2)) - imgWidth / 2;
-
-    white.forEach((element) => {
-      element.style.clipPath =
-        "polygon(" +
-        (imgLeft - ul.offsetLeft) +
-        "px 0px, " +
-        (imgLeft - ul.offsetLeft + imgWidth) +
-        "px 0px, " +
-        (imgLeft - ul.offsetLeft + imgWidth) +
-        "px 200px, " +
-        (imgLeft - ul.offsetLeft) +
-        "px 200px)";
+      white.forEach((element) => {
+        element.style.clipPath =
+          "polygon(" +
+          (imgLeft - ul.offsetLeft) +
+          "px 0px, " +
+          (imgLeft - ul.offsetLeft + imgWidth) +
+          "px 0px, " +
+          (imgLeft - ul.offsetLeft + imgWidth) +
+          "px 200px, " +
+          (imgLeft - ul.offsetLeft) +
+          "px 200px)";
+      });
     });
-  });
 
-  //첫번째 li에 커서 들어갔을 때
-  list[0].addEventListener("mouseenter", () => {
-    liImgChildren[0].style.transform = "translateY(0)";
-    liImgChildren[1].style.transform = "translateY(-100%)";
-    liImgChildren[2].style.transform = "translateY(-100%)";
+    //첫번째 li에 커서 들어갔을 때
+    list[0].addEventListener("mouseenter", () => {
+      liImgChildren[0].style.transform = "translateY(0)";
+      liImgChildren[1].style.transform = "translateY(-100%)";
+      liImgChildren[2].style.transform = "translateY(-100%)";
 
-    white[0].style.opacity = 1;
-  });
+      white[0].style.opacity = 1;
+    });
 
-  list[0].addEventListener("mouseleave", () => {
-    white[0].style.opacity = 0;
-  });
+    list[0].addEventListener("mouseleave", () => {
+      white[0].style.opacity = 0;
+    });
 
-  //두번째 li에 커서 들어갔을 때
-  list[1].addEventListener("mouseenter", (evt) => {
-    gsap.fromTo(
-      liImgChildren[1],
-      {
-        y: "100%",
-        scale: 1.3,
-      },
-      {
-        y: 0,
-        scale: 1,
-        duration: 0.5,
-      }
-    );
-
-    //커서가 아래에서 올라왔다면
-    if (evt.fromElement.innerText.indexOf("채용") != -1) {
+    //두번째 li에 커서 들어갔을 때
+    list[1].addEventListener("mouseenter", (evt) => {
       gsap.fromTo(
-        liImgChildren[2],
-        {
-          y: 0,
-        },
-        {
-          y: "-100%",
-          duration: 0.5,
-        }
-      );
-      //커서가 위에서 내려왔다면
-    } else {
-      gsap.fromTo(
-        liImgChildren[0],
-        {
-          y: 0,
-        },
-        {
-          y: "-100%",
-          duration: 0.5,
-        }
-      );
-    }
-
-    white[1].style.opacity = 1;
-  });
-
-  //두번째 li에서 커서가 나왔을 때
-  list[1].addEventListener("mouseleave", (evt) => {
-    gsap.fromTo(
-      liImgChildren[1],
-      {
-        y: 0,
-      },
-      {
-        y: "-100%",
-        duration: 0.5,
-      }
-    );
-
-    //커서가 아래로 내려갔다면
-    if (evt.toElement.innerText.indexOf("채용") != -1) {
-      gsap.fromTo(
-        liImgChildren[2],
+        liImgChildren[1],
         {
           y: "100%",
           scale: 1.3,
@@ -347,43 +352,101 @@ document.addEventListener("DOMContentLoaded", (event) => {
           duration: 0.5,
         }
       );
-      //커서가 위로 올라갔다면
-    } else {
+
+      //커서가 아래에서 올라왔다면
+      if (evt.fromElement.innerText.indexOf("채용") != -1) {
+        gsap.fromTo(
+          liImgChildren[2],
+          {
+            y: 0,
+          },
+          {
+            y: "-100%",
+            duration: 0.5,
+          }
+        );
+        //커서가 위에서 내려왔다면
+      } else {
+        gsap.fromTo(
+          liImgChildren[0],
+          {
+            y: 0,
+          },
+          {
+            y: "-100%",
+            duration: 0.5,
+          }
+        );
+      }
+
+      white[1].style.opacity = 1;
+    });
+
+    //두번째 li에서 커서가 나왔을 때
+    list[1].addEventListener("mouseleave", (evt) => {
       gsap.fromTo(
-        liImgChildren[0],
-        {
-          y: "100%",
-          scale: 1.3,
-        },
+        liImgChildren[1],
         {
           y: 0,
-          scale: 1,
+        },
+        {
+          y: "-100%",
           duration: 0.5,
         }
       );
-    }
 
-    white[1].style.opacity = 0;
-  });
+      //커서가 아래로 내려갔다면
+      if (evt.toElement.innerText.indexOf("채용") != -1) {
+        gsap.fromTo(
+          liImgChildren[2],
+          {
+            y: "100%",
+            scale: 1.3,
+          },
+          {
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+          }
+        );
+        //커서가 위로 올라갔다면
+      } else {
+        gsap.fromTo(
+          liImgChildren[0],
+          {
+            y: "100%",
+            scale: 1.3,
+          },
+          {
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+          }
+        );
+      }
 
-  //세번째 li에 커서가 들어갔을 때
-  list[2].addEventListener("mouseenter", () => {
-    liImgChildren[0].style.transform = "translateY(-100%)";
-    liImgChildren[1].style.transform = "translateY(-100%)";
-    liImgChildren[2].style.transform = "translateY(0)";
+      white[1].style.opacity = 0;
+    });
 
-    white[2].style.opacity = 1;
-  });
+    //세번째 li에 커서가 들어갔을 때
+    list[2].addEventListener("mouseenter", () => {
+      liImgChildren[0].style.transform = "translateY(-100%)";
+      liImgChildren[1].style.transform = "translateY(-100%)";
+      liImgChildren[2].style.transform = "translateY(0)";
 
-  list[2].addEventListener("mouseleave", () => {
-    white[2].style.opacity = 0;
-  });
+      white[2].style.opacity = 1;
+    });
 
-  //커서가 영역을 벗어나면 없애기
-  ul.addEventListener("mouseleave", () => {
-    gsap.to(liImg, {
-      opacity: 0,
-      duration: 0.2,
+    list[2].addEventListener("mouseleave", () => {
+      white[2].style.opacity = 0;
+    });
+
+    //커서가 영역을 벗어나면 없애기
+    ul.addEventListener("mouseleave", () => {
+      gsap.to(liImg, {
+        opacity: 0,
+        duration: 0.2,
+      });
     });
   });
 

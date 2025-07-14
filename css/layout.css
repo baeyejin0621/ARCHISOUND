@@ -16,6 +16,7 @@ body {
   line-height: 1.15;
   font-weight: 400;
   background-color: #fff;
+  overflow-x: hidden;
 }
 
 /*헤더*/
@@ -486,8 +487,9 @@ h1 > a > img {
   height: 2.4rem;
 }
 
-.mobile_menu .search_wrap .button_area button:last-child {
-  margin-left: 1.2rem;
+.mobile_menu .search_wrap .button_area button:first-child {
+  margin-right: 1.2rem;
+  display: none;
 }
 
 .mobile_menu .search_wrap .button_area button > img {
@@ -535,6 +537,7 @@ h1 > a > img {
 #mobile_menu .submenu {
   padding: 3.2rem 2rem 1.2rem;
   box-sizing: border-box;
+  display: none;
 }
 
 #mobile_menu .submenu li a {
@@ -586,6 +589,10 @@ section {
   margin-top: 2.2916666667vw;
 }
 
+.main_visual .main_txt.mobile {
+  display: none;
+}
+
 .main_visual .main_txt p {
   height: 7.8125vw;
   box-sizing: border-box;
@@ -622,8 +629,13 @@ section {
   opacity: 0;
 }
 
+.main_visual .bottom_txt br {
+  display: none;
+}
+
 /*두번째 섹션*/
 .sec2 {
+  width: 100%;
   height: 45.8333333333vw;
   overflow: hidden;
   opacity: 0;
@@ -639,6 +651,10 @@ section {
 .sec3 {
   margin-top: 16.6666666667vw;
   padding: 0 4.7916666667vw;
+}
+
+.sec3 .mobile {
+  display: none;
 }
 
 .sec3 p {
@@ -667,14 +683,19 @@ section {
 /*배경 영상*/
 .sec4 .bg_video {
   width: 100%;
-  height: 100vh;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 50%;
+  z-index: -1;
+  transform: translateY(-50%);
   mix-blend-mode: normal;
   opacity: 0;
   display: none;
   mix-blend-mode: normal;
+}
+
+.sec4 .bg_video video {
+  width: 100%;
 }
 
 /*중앙 글자*/
@@ -758,6 +779,14 @@ section {
   color: var(--main-color);
 }
 
+.sec4 .content .img_area {
+  width: 100%;
+}
+
+.sec4 .content .img_area > img {
+  width: 100%;
+}
+
 /*다섯번째 섹션*/
 .sec5 {
   margin-top: 12.5vw;
@@ -814,10 +843,19 @@ section {
   row-gap: 4.1666666667vw;
 }
 
+.sec5 .bottom.mobile {
+  display: none;
+  opacity: 0;
+}
+
 .sec5 .bottom a {
   border-top: 4px solid #000;
   width: calc(100% / 3 - calc(2.0833333333vw * 2 / 3));
   opacity: 0;
+}
+
+.sec5 .bottom.mobile a {
+  opacity: 1;
 }
 
 .sec5 .bottom a .top_line {
@@ -889,14 +927,33 @@ section {
   opacity: 0;
 }
 
+.sec5 .bottom.mobile a .bottom_line {
+  opacity: 1;
+}
+
 /*여섯번째 섹션*/
 .sec6 {
   margin-top: 12.5vw;
   height: 49.4791666667vw;
-  background: url(../img/sec6/main_pride_img.jpg) no-repeat center / cover;
-  background-size: 100% 100%;
   padding: 9.375vw 17.7083333333vw 9.375vw 18.125vw;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/*스크롤 따라 움직일 배경 이미지*/
+.sec6 .sec_bg {
+  width: 100%;
+  height: 70.3125vw;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.sec6 .sec_bg > img {
+  height: 100%;
+  object-fit: cover;
 }
 
 /*큰 글자*/
@@ -972,6 +1029,13 @@ section {
 .sec7 ul li a h4 {
   width: 5.5208333333vw;
   font-size: 1.4583333333vw;
+}
+
+.sec7 ul li a .inner_wrap {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sec7 ul li a h3 {
@@ -1112,7 +1176,7 @@ section {
   line-height: 1.1;
   transition: background-color 0.3s ease-in-out;
   position: sticky;
-  left: 85.7291666667vw;
+  right: 14.2708333333vw;
   bottom: 64px;
   cursor: pointer;
 }
@@ -1253,6 +1317,11 @@ footer .bottom .bottom_line .right a {
   height: 2.5vw;
 }
 
+footer .bottom .bottom_line .right a > img {
+  width: 100%;
+  object-fit: cover;
+}
+
 /*인트로 화면*/
 .intro {
   position: fixed;
@@ -1337,8 +1406,8 @@ footer .bottom .bottom_line .right a {
   top: 50%;
   left: 50%;
   pointer-events: none;
-  width: fit-content;
-  height: fit-content;
+  width: 500px;
+  height: 200px;
 }
 
 .intro_bg .logo .intro-lottie .logo_icon {

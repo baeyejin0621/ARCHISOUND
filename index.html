@@ -11,6 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <!--swiper slide-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!--CSS-->
     <link rel="stylesheet" href="./css/layout.css" />
     <!--반응형-->
@@ -227,9 +233,15 @@
               <span>sound</span>
             </p>
           </div>
+          <div class="main_txt mobile">
+            <p><span>beyond</span></p>
+            <p><span>one-stop</span></p>
+            <p><span>service&nbsp;</span><span>for</span></p>
+            <p><span>better</span></p>
+          </div>
           <p class="bottom_txt">
-            공간을 이해하고 소리를 관리하여 오감을 만족시키는 음향환경을
-            디자인하다
+            공간을 이해하고 소리를 관리하여<br />
+            오감을 만족시키는 음향환경을 디자인하다
           </p>
         </section>
         <!--두번째 섹션-->
@@ -238,69 +250,144 @@
         </section>
         <!--세번째 섹션-->
         <section class="sec3">
-          <p>
-            <span>우</span><span>리</span><span>는</span><span>&nbsp;</span
-            ><span>무</span><span>형</span><span>의</span><span>&nbsp;</span
-            ><span>가</span><span>치</span><span>를</span><span>&nbsp;</span
-            ><span>창</span><span>조</span><span>하</span><span>는</span
-            ><span>&nbsp;</span><span>그</span><span>룹</span><span>입</span
-            ><span>니</span><span>다</span><span>.</span>
-          </p>
-          <p>
-            <span>더</span><span>&nbsp;</span><span>좋</span><span>은</span
-            ><span>&nbsp;</span><span>소</span><span>리</span><span>환</span
-            ><span>경</span><span>을</span><span>&nbsp;</span><span>위</span
-            ><span>한</span><span>&nbsp;</span><span>통</span><span>합</span
-            ><span>&nbsp;</span><span>플</span><span>랫</span><span>폼</span
-            ><span>을</span><span>&nbsp;</span><span>통</span><span>해</span
-            ><span>&nbsp;</span><span>문</span><span>화</span><span>예</span
-            ><span>술</span><span>컨</span><span>텐</span><span>츠</span
-            ><span>의</span>
-          </p>
-          <p>
-            <span>수</span><span>준</span><span>을</span><span>&nbsp;</span
-            ><span>높</span><span>이</span><span>고</span><span>&nbsp;</span
-            ><span>삶</span><span>의</span><span>&nbsp;</span><span>가</span
-            ><span>치</span><span>를</span><span>&nbsp;</span><span>향</span
-            ><span>상</span><span>시</span><span>키</span><span>는</span
-            ><span>&nbsp;</span><span>건</span><span>축</span><span>물</span
-            ><span>을</span><span>&nbsp;</span><span>만</span><span>들</span
-            ><span>고</span><span>&nbsp;</span><span>있</span><span>습</span
-            ><span>니</span><span>다</span><span>.</span>
-          </p>
-          <p>
-            <span>음</span><span>향</span><span>이</span><span>라</span
-            ><span>는</span><span>&nbsp;</span><span>특</span><span>수</span
-            ><span>한</span><span>&nbsp;</span><span>분</span><span>야</span
-            ><span>의</span><span>&nbsp;</span><span>오</span><span>랜</span
-            ><span>&nbsp;</span><span>경</span><span>험</span><span>과</span
-            ><span>&nbsp;</span><span>기</span><span>술</span><span>력</span
-            ><span>,</span><span>&nbsp;</span><span>최</span><span>고</span
-            ><span>의</span><span>&nbsp;</span><span>인</span><span>재</span
-            ><span>를</span><span>&nbsp;</span><span>겸</span><span>비</span
-            ><span>하</span><span>고</span>
-          </p>
-          <p>
-            <span>있</span><span>습</span><span>니</span><span>다</span
-            ><span>.</span><span>&nbsp;</span><span>건</span><span>축</span
-            ><span>공</span><span>간</span><span>의</span><span>&nbsp;</span
-            ><span>다</span><span>양</span><span>성</span><span>을</span
-            ><span>&nbsp;</span><span>존</span><span>중</span><span>하</span
-            ><span>면</span><span>서</span><span>&nbsp;</span><span>각</span
-            ><span>자</span><span>의</span><span>&nbsp;</span><span>한</span
-            ><span>계</span><span>를</span><span>&nbsp;</span><span>넘</span
-            ><span>어</span>
-          </p>
-          <p>
-            <span>가</span><span>능</span><span>성</span><span>을</span
-            ><span>&nbsp;</span><span>실</span><span>현</span><span>할</span
-            ><span>&nbsp;</span><span>가</span><span>치</span><span>향</span
-            ><span>상</span><span>을</span><span>&nbsp;</span><span>위</span
-            ><span>한</span><span>&nbsp;</span><span>기</span><span>술</span
-            ><span>을</span><span>&nbsp;</span><span>제</span><span>공</span
-            ><span>하</span><span>겠</span><span>습</span><span>니</span
-            ><span>다</span><span>.</span>
-          </p>
+          <div class="content_wrap">
+            <p>
+              <span>우</span><span>리</span><span>는</span><span>&nbsp;</span
+              ><span>무</span><span>형</span><span>의</span><span>&nbsp;</span
+              ><span>가</span><span>치</span><span>를</span><span>&nbsp;</span
+              ><span>창</span><span>조</span><span>하</span><span>는</span
+              ><span>&nbsp;</span><span>그</span><span>룹</span><span>입</span
+              ><span>니</span><span>다</span><span>.</span>
+            </p>
+            <p>
+              <span>더</span><span>&nbsp;</span><span>좋</span><span>은</span
+              ><span>&nbsp;</span><span>소</span><span>리</span><span>환</span
+              ><span>경</span><span>을</span><span>&nbsp;</span><span>위</span
+              ><span>한</span><span>&nbsp;</span><span>통</span><span>합</span
+              ><span>&nbsp;</span><span>플</span><span>랫</span><span>폼</span
+              ><span>을</span><span>&nbsp;</span><span>통</span><span>해</span
+              ><span>&nbsp;</span><span>문</span><span>화</span><span>예</span
+              ><span>술</span><span>컨</span><span>텐</span><span>츠</span
+              ><span>의</span>
+            </p>
+            <p>
+              <span>수</span><span>준</span><span>을</span><span>&nbsp;</span
+              ><span>높</span><span>이</span><span>고</span><span>&nbsp;</span
+              ><span>삶</span><span>의</span><span>&nbsp;</span><span>가</span
+              ><span>치</span><span>를</span><span>&nbsp;</span><span>향</span
+              ><span>상</span><span>시</span><span>키</span><span>는</span
+              ><span>&nbsp;</span><span>건</span><span>축</span><span>물</span
+              ><span>을</span><span>&nbsp;</span><span>만</span><span>들</span
+              ><span>고</span><span>&nbsp;</span><span>있</span><span>습</span
+              ><span>니</span><span>다</span><span>.</span>
+            </p>
+            <p>
+              <span>음</span><span>향</span><span>이</span><span>라</span
+              ><span>는</span><span>&nbsp;</span><span>특</span><span>수</span
+              ><span>한</span><span>&nbsp;</span><span>분</span><span>야</span
+              ><span>의</span><span>&nbsp;</span><span>오</span><span>랜</span
+              ><span>&nbsp;</span><span>경</span><span>험</span><span>과</span
+              ><span>&nbsp;</span><span>기</span><span>술</span><span>력</span
+              ><span>,</span><span>&nbsp;</span><span>최</span><span>고</span
+              ><span>의</span><span>&nbsp;</span><span>인</span><span>재</span
+              ><span>를</span><span>&nbsp;</span><span>겸</span><span>비</span
+              ><span>하</span><span>고</span>
+            </p>
+            <p>
+              <span>있</span><span>습</span><span>니</span><span>다</span
+              ><span>.</span><span>&nbsp;</span><span>건</span><span>축</span
+              ><span>공</span><span>간</span><span>의</span><span>&nbsp;</span
+              ><span>다</span><span>양</span><span>성</span><span>을</span
+              ><span>&nbsp;</span><span>존</span><span>중</span><span>하</span
+              ><span>면</span><span>서</span><span>&nbsp;</span><span>각</span
+              ><span>자</span><span>의</span><span>&nbsp;</span><span>한</span
+              ><span>계</span><span>를</span><span>&nbsp;</span><span>넘</span
+              ><span>어</span>
+            </p>
+            <p>
+              <span>가</span><span>능</span><span>성</span><span>을</span
+              ><span>&nbsp;</span><span>실</span><span>현</span><span>할</span
+              ><span>&nbsp;</span><span>가</span><span>치</span><span>향</span
+              ><span>상</span><span>을</span><span>&nbsp;</span><span>위</span
+              ><span>한</span><span>&nbsp;</span><span>기</span><span>술</span
+              ><span>을</span><span>&nbsp;</span><span>제</span><span>공</span
+              ><span>하</span><span>겠</span><span>습</span><span>니</span
+              ><span>다</span><span>.</span>
+            </p>
+          </div>
+          <div class="content_wrap mobile">
+            <p>
+              <span>우</span><span>리</span><span>는</span><span>&nbsp;</span
+              ><span>무</span><span>형</span><span>의</span><span>&nbsp;</span
+              ><span>가</span><span>치</span><span>를</span><span>&nbsp;</span
+              ><span>창</span><span>조</span><span>하</span><span>는</span>
+            </p>
+            <p>
+              <span>그</span><span>룹</span><span>입</span><span>니</span
+              ><span>다</span><span>.</span><span>&nbsp;</span><span>더</span
+              ><span>&nbsp;</span><span>좋</span><span>은</span
+              ><span>&nbsp;</span><span>소</span><span>리</span><span>환</span
+              ><span>경</span><span>을</span><span>&nbsp;</span><span>위</span
+              ><span>한</span>
+            </p>
+            <p>
+              <span>통</span><span>합</span><span>&nbsp;</span><span>플</span
+              ><span>랫</span><span>폼</span><span>을</span><span>&nbsp;</span
+              ><span>통</span><span>해</span><span>&nbsp;</span><span>문</span
+              ><span>화</span><span>예</span><span>술</span><span>컨</span
+              ><span>텐</span><span>츠</span><span>의</span>
+            </p>
+            <p>
+              <span>수</span><span>준</span><span>을</span><span>&nbsp;</span
+              ><span>높</span><span>이</span><span>고</span><span>&nbsp;</span
+              ><span>삶</span><span>의</span><span>&nbsp;</span><span>가</span
+              ><span>치</span><span>를</span><span>&nbsp;</span><span>향</span
+              ><span>상</span><span>시</span><span>키</span><span>는</span>
+            </p>
+            <p>
+              <span>건</span><span>축</span><span>물</span><span>을</span
+              ><span>&nbsp;</span><span>만</span><span>들</span><span>고</span
+              ><span>&nbsp;</span><span>있</span><span>습</span><span>니</span
+              ><span>다</span><span>.</span><span>&nbsp;</span><span>음</span
+              ><span>향</span><span>이</span><span>라</span><span>는</span>
+            </p>
+            <p>
+              <span>특</span><span>수</span><span>한</span><span>&nbsp;</span
+              ><span>분</span><span>야</span><span>의</span><span>&nbsp;</span
+              ><span>오</span><span>랜</span><span>&nbsp;</span><span>경</span
+              ><span>험</span><span>과</span><span>&nbsp;</span><span>기</span
+              ><span>술</span><span>력</span><span>,</span>
+            </p>
+            <p>
+              <span>최</span><span>고</span><span>의</span><span>&nbsp;</span
+              ><span>인</span><span>재</span><span>를</span><span>&nbsp;</span
+              ><span>겸</span><span>비</span><span>하</span><span>고</span
+              ><span>&nbsp;</span><span>있</span><span>습</span><span>니</span
+              ><span>다</span><span>.</span>
+            </p>
+            <p>
+              <span>건</span><span>축</span><span>공</span><span>간</span
+              ><span>의</span><span>&nbsp;</span><span>다</span><span>양</span
+              ><span>성</span><span>을</span><span>&nbsp;</span><span>존</span
+              ><span>중</span><span>하</span><span>면</span><span>서</span>
+            </p>
+            <p>
+              <span>각</span><span>자</span><span>의</span><span>&nbsp;</span
+              ><span>한</span><span>계</span><span>를</span><span>&nbsp;</span
+              ><span>넘</span><span>어</span><span>&nbsp;</span><span>가</span
+              ><span>능</span><span>성</span><span>을</span>
+            </p>
+            <p>
+              <span>실</span><span>현</span><span>할</span><span>&nbsp;</span
+              ><span>가</span><span>치</span><span>향</span><span>상</span
+              ><span>을</span><span>&nbsp;</span><span>위</span><span>한</span
+              ><span>&nbsp;</span><span>기</span><span>술</span><span>을</span>
+            </p>
+            <p>
+              <span>제</span><span>공</span><span>하</span><span>겠</span
+              ><span>습</span><span>니</span><span>다</span><span>.</span>
+            </p>
+          </div>
         </section>
         <!--네번째 섹션-->
         <section class="sec4">
@@ -2723,9 +2810,112 @@
               </div>
             </a>
           </div>
+          <div class="bottom mobile">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <a href="#" class="swiper-slide">
+                  <div class="top_line">
+                    <h4>01</h4>
+                    <p>Studio 외 3</p>
+                  </div>
+                  <div class="img_area">
+                    <img src="./img/sec5/1_main01.png" alt="HYBE 용산 신사옥" />
+                  </div>
+                  <div class="bottom_line">
+                    <h3>HYBE 용산 신사옥 1.0 및 2.0 Project</h3>
+                  </div>
+                </a>
+                <a href="#" class="swiper-slide">
+                  <div class="top_line">
+                    <h4>02</h4>
+                    <p>Mixed-Use 외 2</p>
+                  </div>
+                  <div class="img_area">
+                    <img
+                      src="./img/sec5/2_main2.png"
+                      alt="2012 서울 핵안보정상회의"
+                    />
+                  </div>
+                  <div class="bottom_line">
+                    <h3>
+                      2012 서울 핵안보정상회의&#40;2012 Seoul Nuclear Security
+                      Summit&#41;
+                    </h3>
+                  </div>
+                </a>
+                <a href="#" class="swiper-slide">
+                  <div class="top_line">
+                    <h4>03</h4>
+                    <p>Mixed-Use 외 5</p>
+                  </div>
+                  <div class="img_area">
+                    <img src="./img/sec5/3_main03.jpg" alt="롯데월드타워" />
+                  </div>
+                  <div class="bottom_line">
+                    <h3>롯데월드타워 Project</h3>
+                  </div>
+                </a>
+                <a href="#" class="swiper-slide">
+                  <div class="top_line">
+                    <h4>04</h4>
+                    <p>Mixed-Use 외 5</p>
+                  </div>
+                  <div class="img_area">
+                    <img
+                      src="./img/sec5/4_main04.jpg"
+                      alt="센터필드, 조선 팰리스 서울 강남"
+                    />
+                  </div>
+                  <div class="bottom_line">
+                    <h3>
+                      센터필드&#40;CENTERFIELD&#41;, 조선 팰리스 서울 강남
+                    </h3>
+                  </div>
+                </a>
+                <a href="#" class="swiper-slide">
+                  <div class="top_line">
+                    <h4>05</h4>
+                    <p>Culture 외 2</p>
+                  </div>
+                  <div class="img_area">
+                    <img
+                      src="./img/sec5/5_main05.png"
+                      alt="마린스키 연해주 극장"
+                    />
+                  </div>
+                  <div class="bottom_line">
+                    <h3>
+                      마린스키 연해주 극장&#40;Primorsky Stage Of The Mariinsky
+                      Theatre&#41;
+                    </h3>
+                  </div>
+                </a>
+                <a href="#" class="swiper-slide">
+                  <div class="top_line">
+                    <h4>06</h4>
+                    <p>Culture 외 4</p>
+                  </div>
+                  <div class="img_area">
+                    <img src="./img/sec5/6_main0601.png" alt="네이버" />
+                  </div>
+                  <div class="bottom_line">
+                    <h3>네이버 Project</h3>
+                  </div>
+                </a>
+              </div>
+              <div class="custom-pagination">
+                <div class="custom-pagination-current">1</div>
+                <div class="bar"></div>
+                <div class="custom-pagination-total">6</div>
+              </div>
+            </div>
+          </div>
         </section>
         <!--여섯번째 섹션-->
         <section class="sec6">
+          <div class="sec_bg">
+            <img src="./img/sec6/main_pride_img.jpg" alt="배경 이미지" />
+          </div>
           <h2>
             <p><span>음향산업 부문 최초</span></p>
             <p><span>글로벌 고성장 기업</span></p>
@@ -2754,29 +2944,35 @@
             <li>
               <a href="#">
                 <h4>소식</h4>
-                <h3>
-                  ㈜아키사운드, 세계최초 그래핀CVD 케이블을 탑재한 하이엔드
-                  이어폰 퓨어톤&#40;PURETONE&#41; 및 퓨어톤 프로&#40;PURETONE
-                  Pro&#41;, 그래핀 연결젠더 출시
-                </h3>
-                <span>2025-02-01</span>
+                <div class="inner_wrap">
+                  <h3>
+                    ㈜아키사운드, 세계최초 그래핀CVD 케이블을 탑재한 하이엔드
+                    이어폰 퓨어톤&#40;PURETONE&#41; 및 퓨어톤 프로&#40;PURETONE
+                    Pro&#41;, 그래핀 연결젠더 출시
+                  </h3>
+                  <span>2025-02-01</span>
+                </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <h4>소식</h4>
-                <h3>
-                  ㈜아키사운드, 아이어워즈&#40;i-AWARDS&#41; 2024 WEB AWARD
-                  중견기업분야 최우수상 수상
-                </h3>
-                <span>2024-12-18</span>
+                <div class="inner_wrap">
+                  <h3>
+                    ㈜아키사운드, 아이어워즈&#40;i-AWARDS&#41; 2024 WEB AWARD
+                    중견기업분야 최우수상 수상
+                  </h3>
+                  <span>2024-12-18</span>
+                </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <h4>채용</h4>
-                <h3>㈜아키사운드 상시채용정보</h3>
-                <span>2024-04-15</span>
+                <div class="inner_wrap">
+                  <h3>㈜아키사운드 상시채용정보</h3>
+                  <span>2024-04-15</span>
+                </div>
               </a>
             </li>
           </ul>
@@ -2792,29 +2988,35 @@
             <li>
               <a href="#">
                 <h4>소식</h4>
-                <h3>
-                  ㈜아키사운드, 세계최초 그래핀CVD 케이블을 탑재한 하이엔드
-                  이어폰 퓨어톤&#40;PURETONE&#41; 및 퓨어톤 프로&#40;PURETONE
-                  Pro&#41;, 그래핀 연결젠더 출시
-                </h3>
-                <span>2025-02-01</span>
+                <div class="inner_wrap">
+                  <h3>
+                    ㈜아키사운드, 세계최초 그래핀CVD 케이블을 탑재한 하이엔드
+                    이어폰 퓨어톤&#40;PURETONE&#41; 및 퓨어톤 프로&#40;PURETONE
+                    Pro&#41;, 그래핀 연결젠더 출시
+                  </h3>
+                  <span>2025-02-01</span>
+                </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <h4>소식</h4>
-                <h3>
-                  ㈜아키사운드, 아이어워즈&#40;i-AWARDS&#41; 2024 WEB AWARD
-                  중견기업분야 최우수상 수상
-                </h3>
-                <span>2024-12-18</span>
+                <div class="inner_wrap">
+                  <h3>
+                    ㈜아키사운드, 아이어워즈&#40;i-AWARDS&#41; 2024 WEB AWARD
+                    중견기업분야 최우수상 수상
+                  </h3>
+                  <span>2024-12-18</span>
+                </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <h4>채용</h4>
-                <h3>㈜아키사운드 상시채용정보</h3>
-                <span>2024-04-15</span>
+                <div class="inner_wrap">
+                  <h3>㈜아키사운드 상시채용정보</h3>
+                  <span>2024-04-15</span>
+                </div>
               </a>
             </li>
           </ul>
@@ -2822,29 +3024,35 @@
             <li>
               <a href="#">
                 <h4>소식</h4>
-                <h3>
-                  ㈜아키사운드, 세계최초 그래핀CVD 케이블을 탑재한 하이엔드
-                  이어폰 퓨어톤&#40;PURETONE&#41; 및 퓨어톤 프로&#40;PURETONE
-                  Pro&#41;, 그래핀 연결젠더 출시
-                </h3>
-                <span>2025-02-01</span>
+                <div class="inner_wrap">
+                  <h3>
+                    ㈜아키사운드, 세계최초 그래핀CVD 케이블을 탑재한 하이엔드
+                    이어폰 퓨어톤&#40;PURETONE&#41; 및 퓨어톤 프로&#40;PURETONE
+                    Pro&#41;, 그래핀 연결젠더 출시
+                  </h3>
+                  <span>2025-02-01</span>
+                </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <h4>소식</h4>
-                <h3>
-                  ㈜아키사운드, 아이어워즈&#40;i-AWARDS&#41; 2024 WEB AWARD
-                  중견기업분야 최우수상 수상
-                </h3>
-                <span>2024-12-18</span>
+                <div class="inner_wrap">
+                  <h3>
+                    ㈜아키사운드, 아이어워즈&#40;i-AWARDS&#41; 2024 WEB AWARD
+                    중견기업분야 최우수상 수상
+                  </h3>
+                  <span>2024-12-18</span>
+                </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <h4>채용</h4>
-                <h3>㈜아키사운드 상시채용정보</h3>
-                <span>2024-04-15</span>
+                <div class="inner_wrap">
+                  <h3>㈜아키사운드 상시채용정보</h3>
+                  <span>2024-04-15</span>
+                </div>
               </a>
             </li>
           </ul>
@@ -3430,5 +3638,7 @@
     <script src="./js/motionpath.js"></script>
     <!--인트로 애니메이션-->
     <script src="./js/intro.js"></script>
+    <!--슬라이드-->
+    <script src="./js/slide.js"></script>
   </body>
 </html>
