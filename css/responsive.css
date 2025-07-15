@@ -384,6 +384,10 @@
     display: none;
   }
 
+  .sec7 .img_wrapper {
+    display: none;
+  }
+
   /*여덟번째 섹션*/
   .sec8 {
     margin-top: 10rem;

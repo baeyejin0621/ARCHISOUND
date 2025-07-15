@@ -57,6 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainTxt = document.querySelectorAll(
       ".main_visual .main_txt.mobile p span"
     );
+    const all = gsap.utils.toArray(".animated");
+
+    gsap.set(all, {
+      clearProps: "all",
+    });
 
     //음악
     let introTl = gsap
@@ -372,6 +377,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //브라우저 너비가 1025px 이상일 때
   gsap.matchMedia().add("(min-width: 1025px)", () => {
     const mainTxt = document.querySelectorAll(".main_visual .main_txt p span");
+    const all = gsap.utils.toArray(".animated");
+
+    gsap.set(all, {
+      clearProps: "all",
+    });
 
     //음악
     let introTl = gsap
@@ -688,7 +698,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(introTl);
     //음악 버튼 클릭하면 애니메이션 뛰어넘기
     musicBtn.addEventListener("click", () => {
-      console.log("무엇이 문제일까");
       introTl.progress(2.9);
 
       document.querySelector(".floating").style.backgroundColor =
