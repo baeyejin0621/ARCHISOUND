@@ -1,12 +1,5 @@
 "use strict";
 
-//새로고침할 때마다 스크롤 최상단으로 이동
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 10);
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(MotionPathPlugin);
   const intro = document.querySelector(".intro");
@@ -27,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoPath2 = document.querySelectorAll(
     ".intro_bg .logo .intro-lottie .logo_icon > svg > g > g > g > :is(g:nth-of-type(3), g:nth-of-type(4)) path"
   );
+  const logoTxt = document.querySelector(".logo_txt");
   const logoTxtBlack = document.querySelector(".logo_txt .black");
   const logoTxtInner = document.querySelector(
     ".intro_bg .logo .logo_txt > svg > g > g"
@@ -65,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     //음악
-    gsap
+    let introTl = gsap
       .timeline({
         repeat: 3,
         onComplete: () => {
@@ -146,8 +140,24 @@ document.addEventListener("DOMContentLoaded", () => {
             .to(
               logoTxtBlack,
               {
+                display: "block",
+                duration: 0.01,
+              },
+              "<"
+            )
+            .to(
+              logoTxtBlack,
+              {
                 width: 165,
                 duration: 0.3,
+              },
+              "<"
+            )
+            .to(
+              logoTxt,
+              {
+                display: "block",
+                duration: 0.01,
               },
               "<"
             );
@@ -315,12 +325,11 @@ document.addEventListener("DOMContentLoaded", () => {
         fade,
         {
           scale: 1,
-          x: "-50%",
+          xPercent: -50,
           opacity: 1,
         },
         {
           scale: 3.6,
-          x: "-50%",
           opacity: 0,
           duration: 0.8,
           ease: "power1.in",
@@ -350,13 +359,22 @@ document.addEventListener("DOMContentLoaded", () => {
       opacity: 1,
       duration: 0.01,
     });
+
+    //음악 버튼 클릭하면 애니메이션 뛰어넘기
+    musicBtn.addEventListener("click", () => {
+      introTl.progress(2.9);
+
+      document.querySelector(".floating").style.backgroundColor =
+        "rgba(248, 182, 45, 0.8509803922)";
+    });
   });
 
   //브라우저 너비가 1025px 이상일 때
   gsap.matchMedia().add("(min-width: 1025px)", () => {
     const mainTxt = document.querySelectorAll(".main_visual .main_txt p span");
+
     //음악
-    gsap
+    let introTl = gsap
       .timeline({
         repeat: 3,
         onComplete: () => {
@@ -447,8 +465,24 @@ document.addEventListener("DOMContentLoaded", () => {
             .to(
               logoTxtBlack,
               {
+                display: "block",
+                duration: 0.01,
+              },
+              "<"
+            )
+            .to(
+              logoTxtBlack,
+              {
                 width: 92,
                 duration: 0.5,
+              },
+              "<"
+            )
+            .to(
+              logoTxt,
+              {
+                display: "block",
+                duration: 0.01,
               },
               "<"
             );
@@ -616,12 +650,11 @@ document.addEventListener("DOMContentLoaded", () => {
         fade,
         {
           scale: 1,
-          x: "-50%",
+          xPercent: -50,
           opacity: 1,
         },
         {
           scale: 3.6,
-          x: "-50%",
           opacity: 0,
           duration: 0.8,
           ease: "power1.in",
@@ -650,6 +683,16 @@ document.addEventListener("DOMContentLoaded", () => {
       delay: 0.8,
       opacity: 1,
       duration: 0.01,
+    });
+
+    console.log(introTl);
+    //음악 버튼 클릭하면 애니메이션 뛰어넘기
+    musicBtn.addEventListener("click", () => {
+      console.log("무엇이 문제일까");
+      introTl.progress(2.9);
+
+      document.querySelector(".floating").style.backgroundColor =
+        "rgba(248, 182, 45, 0.8509803922)";
     });
   });
 });

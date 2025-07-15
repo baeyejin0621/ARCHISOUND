@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(MotionPathPlugin);
 
-  gsap.matchMedia().add("(max-width: 1024px)", () => {
+  gsap.matchMedia().add("(min-width: 1025px)", () => {
     //이미지 영역
     const hoverImg = document.querySelectorAll(".sec5 .bottom a .img_area");
     //호버하면 나타날 요소

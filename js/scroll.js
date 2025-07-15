@@ -19,6 +19,14 @@ requestAnimationFrame(raf);
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger);
 
+  //새로고침할 때마다 스크롤 최상단으로 이동
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+    ScrollTrigger.refresh();
+  });
+
   /*헤더*/
   //헤더
   const innerHeader = document.querySelector(".inner_header");
@@ -226,7 +234,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   /*네번째 섹션*/
   //사진 컨텐츠
-  const imgContent = Array.from(document.querySelectorAll(".sec4 .content a"));
+  const imgContent = Array.from(
+    document.querySelectorAll(".sec4 .content a h3")
+  );
 
   //사진 제목
   const imgTitle = Array.from(
@@ -333,83 +343,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
         },
         "<"
       );
-
-    //글자색 바꾸기
-    imgContent.forEach((element, i) => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: element,
-            start: "50% 50%",
-            end: "50% 50%",
-            scrub: true,
-          },
-        })
-        .to(element.children[0], {
-          color: "var(--main-color)",
-        });
-
-      //이전 글자 사라지기
-      if (i > 0) {
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: element,
-              start: "50% 50%",
-              end: "50% 50%",
-              scrub: true,
-            },
-          })
-          .to(imgTitle1[i - 1], {
-            opacity: 0,
-          })
-          .to(
-            imgTitle2[i - 1],
-            {
-              opacity: 0,
-            },
-            "<"
-          );
-      }
-
-      //현재 글자 나타나기
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: element,
-            start: "50% 50%",
-            end: "50% 50%",
-            scrub: true,
-          },
-        })
-        .to(imgTitle1[i], {
-          opacity: 1,
-        })
-        .to(
-          imgTitle2[i],
-          {
-            opacity: 1,
-          },
-          "<"
-        );
-    });
   });
 
   gsap.matchMedia().add("(min-width: 1025px)", () => {
-    //배경 검정색으로 바꾸기
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".sec4",
-          start: "0% 100%",
-          end: "3% 100%",
-          scrub: 1,
-        },
-      })
-      .to("body", {
-        backgroundColor: "#000",
-      });
-
     //배경 영상이랑 중앙 글자 보이기
     gsap
       .timeline({
@@ -420,10 +356,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
           scrub: 1,
         },
       })
-      .to(".sec4 .bg_video", {
-        display: "block",
-        duration: 0.01,
+      .to("body", {
+        backgroundColor: "#000",
+        duration: 0.1,
       })
+      .to(
+        ".sec4 .bg_video",
+        {
+          display: "block",
+          duration: 0.01,
+        },
+        "<"
+      )
       .to(
         ".sec4 .bg_video",
         {
@@ -490,9 +434,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
         },
         "<"
       );
+  });
 
-    //글자색 바꾸기
-    imgContent.forEach((element, i) => {
+  //글자색 바꾸기
+  imgContent.forEach((element, i) => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: "0% 50%",
+          end: "0% 50%",
+          scrub: true,
+        },
+      })
+      .to(element, {
+        color: "var(--main-color)",
+      });
+
+    //이전 글자 사라지기
+    if (i > 0) {
       gsap
         .timeline({
           scrollTrigger: {
@@ -502,54 +462,38 @@ document.addEventListener("DOMContentLoaded", (event) => {
             scrub: true,
           },
         })
-        .to(element.children[0], {
-          color: "var(--main-color)",
-        });
-
-      //이전 글자 사라지기
-      if (i > 0) {
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: element,
-              start: "0% 50%",
-              end: "0% 50%",
-              scrub: true,
-            },
-          })
-          .to(imgTitle1[i - 1], {
-            opacity: 0,
-          })
-          .to(
-            imgTitle2[i - 1],
-            {
-              opacity: 0,
-            },
-            "<"
-          );
-      }
-
-      //현재 글자 나타나기
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: element,
-            start: "0% 50%",
-            end: "0% 50%",
-            scrub: true,
-          },
-        })
-        .to(imgTitle1[i], {
-          opacity: 1,
+        .to(imgTitle1[i - 1], {
+          opacity: 0,
         })
         .to(
-          imgTitle2[i],
+          imgTitle2[i - 1],
           {
-            opacity: 1,
+            opacity: 0,
           },
           "<"
         );
-    });
+    }
+
+    //현재 글자 나타나기
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: "0% 50%",
+          end: "0% 50%",
+          scrub: true,
+        },
+      })
+      .to(imgTitle1[i], {
+        opacity: 1,
+      })
+      .to(
+        imgTitle2[i],
+        {
+          opacity: 1,
+        },
+        "<"
+      );
   });
 
   //다섯번째 섹션
@@ -777,44 +721,91 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
 
   /*일곱번째 섹션*/
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".sec7",
-        start: "0% 40%",
-        end: "0% 10%",
-      },
-    })
-    .fromTo(
-      ".sec7 .top .row > *",
-      {
-        y: 100,
-      },
-      {
-        y: 0,
-        duration: 0.4,
-      }
-    )
-    .fromTo(
-      ".sec7 .top p",
-      {
-        y: "20px",
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-      }
-    )
-    .fromTo(
-      ".sec7 ul",
-      {
-        y: "20px",
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-      }
-    );
+  //브라우저 너비가 1024 이하일 때
+  gsap.matchMedia().add("(max-width: 1024px)", () => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".sec7",
+          start: "0% 40%",
+          end: "0% 10%",
+        },
+      })
+      .fromTo(
+        ".sec7 .top .row > *",
+        {
+          y: 100,
+        },
+        {
+          y: 0,
+          duration: 0.3,
+        }
+      )
+      .fromTo(
+        ".sec7 .top p",
+        {
+          y: "20px",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        }
+      )
+      .fromTo(
+        ".sec7 ul",
+        {
+          y: "20px",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        }
+      );
+  });
+
+  //브라우저 너비가 1025 이상일 때
+  gsap.matchMedia().add("(min-width: 1025px)", () => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".sec7",
+          start: "0% 40%",
+          end: "0% 10%",
+        },
+      })
+      .fromTo(
+        ".sec7 .top .row > *",
+        {
+          y: 100,
+        },
+        {
+          y: 0,
+          duration: 0.4,
+        }
+      )
+      .fromTo(
+        ".sec7 .top p",
+        {
+          y: "20px",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+        }
+      )
+      .fromTo(
+        ".sec7 ul",
+        {
+          y: "20px",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+        }
+      );
+  });
 });
